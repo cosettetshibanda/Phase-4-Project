@@ -1,6 +1,4 @@
 import {useEffect, useState} from "react";
-import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
 import { useNavigate } from "react-router-dom"
 
 
@@ -18,7 +16,7 @@ function Login({onLogin}){
     
     return (
         <div>
-            <LoginForm onLogin={onLogin} />
+    
             <p className="accountQuestion">
                 Don't have and account? 
             </p>
@@ -27,7 +25,6 @@ function Login({onLogin}){
                 onClick={() => setHaveAccount(false)} >
                     Sign Up
             </button>
-           <SignUpForm onLogin={onLogin} />
            <p className="acountQuestion">
             Already have an account?
            </p>
