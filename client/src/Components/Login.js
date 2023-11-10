@@ -1,10 +1,20 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
+import { useNavigate } from "react-router-dom"
 
 
 function Login({onLogin}){
-    const [showLogin, setShowLogin] = useState(true)
+    const navigate = useNavigate()
+    const [haveAccount, setHaveAccount] = useState(false)
+
+    useEffect(() => {
+        if(haveAccount) {
+            navigate("/login")
+        } else {
+            navigate("/signup")
+        }
+    }, [haveAccount])
     
     return (
         <div>
@@ -14,7 +24,7 @@ function Login({onLogin}){
             </p>
             <button 
                 type="button"
-                onClick={() => setShowLogin(false)}>
+                onClick={() => setHaveAccount(false)} >
                     Sign Up
             </button>
            <SignUpForm onLogin={onLogin} />
@@ -23,7 +33,7 @@ function Login({onLogin}){
            </p>
            <button 
                 type="button"
-                onClick={() => setShowLogin(true)}>
+                onClick={() => setHaveAccount(true)}>
                     Log In
            </button>
             
