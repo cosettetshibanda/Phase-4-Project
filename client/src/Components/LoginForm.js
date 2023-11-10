@@ -1,7 +1,6 @@
-function LoginForm() {
+function LoginForm({onLogin}) {
     return (
         <div>
-
         </div>
     )
 }
