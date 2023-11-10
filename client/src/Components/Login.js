@@ -14,7 +14,7 @@ function Login({onLogin}){
         } else {
             navigate("/signup")
         }
-    }, [haveAccount])
+    }, [haveAccount, navigate])
     
     return (
         <div>
