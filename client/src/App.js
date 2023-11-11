@@ -2,8 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Login from './Components/Login';
 import { Routes, Route } from "react-router-dom";
-import LoginForm from './Components/LoginForm';
-import SignUpForm from './Components/SignUpForm';
+import NavBar from './Components/NavBar';
 
 
 function App() {
@@ -23,6 +22,7 @@ function App() {
 
   return (
     <main>
+      <NavBar />
       {/* <Routes>
         <Route path="/login" element={<LoginForm onLogin={setUser}/>} />
         <Route path="/signup" element={<SignUpForm onLogin={setUser}/>} />

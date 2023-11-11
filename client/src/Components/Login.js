@@ -9,9 +9,6 @@ import LoginForm from "./LoginForm";
 
 function Login(){
     const navigate = useNavigate()
-    // const {loggedIn, loginUser} = useContext(UsersContext)
-    // const {loggedIn, loginUser} = useContext(UsersContext)
-    const [haveAccount, setHaveAccount] = useState(false)
     const [showLoginForm, setShowLoginForm] = useState(false)
     const [showSignupForm, setShowSignupForm] = useState(false)
     const [showSignupButton, setShowSignupButton] = useState(true)
@@ -26,20 +23,22 @@ function Login(){
     setShowSignupForm((showSignupForm) => !showSignupForm)
     setShowSignupButton((showButton) => !showButton)
    }
-   
-    useEffect(() => {
-        if(haveAccount) {
-            navigate("/login")
-        } else {
-            navigate("/signup")
-        }
-    }, [haveAccount, navigate])
-    
+
     return (
         <div>
-    
+             <h1>Find the Best Car Seat For You!</h1>
+            <p className="acountQuestion">
+             Already have an account?
+            </p>
+            {showLoginButton ? <button 
+                 type="button"
+                 onClick={handleLoginClick}>
+                     Log In
+            </button> :null}
+            {showLoginForm ? <LoginForm /> : null}
+             
             <p className="accountQuestion">
-                Don't have and account? 
+                Don't have an account? 
             </p>
             {showSignupButton ? <button 
                 type="button"
@@ -47,16 +46,6 @@ function Login(){
                     Sign Up
             </button> : null}
             {showSignupForm ? <SignUpForm /> : null}
-           <p className="acountQuestion">
-            Already have an account?
-           </p>
-           {showLoginButton ? <button 
-                type="button"
-                onClick={handleLoginClick}>
-                    Log In
-           </button> :null}
-           {showLoginForm ? <LoginForm /> : null}
-            
 
             
         </div>

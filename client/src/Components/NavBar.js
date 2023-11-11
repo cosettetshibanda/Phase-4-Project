@@ -9,7 +9,9 @@ function NavBar({ user, setUser}) {
         })
     }
     return (
-        <div></div>
+        <div>
+            <h1>Find the Best Carseat For You!</h1>
+        </div>
 
     )
 }
