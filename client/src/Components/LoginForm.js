@@ -24,6 +24,8 @@ function LoginForm({onLogin}) {
         .then(response => response.json())
         .then(user => onLogin(user))
       };
+
+      
     return (
         <form onSubmit={handleSubmit}>
             <label>Username</label>
