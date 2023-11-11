@@ -14,13 +14,17 @@ function Login(){
     const [haveAccount, setHaveAccount] = useState(false)
     const [showLoginForm, setShowLoginForm] = useState(false)
     const [showSignupForm, setShowSignupForm] = useState(false)
+    const [showSignupButton, setShowSignupButton] = useState(true)
+    const [showLoginButton, setShowLoginButton] = useState(true)
 
    const handleLoginClick = () => {
     setShowLoginForm((showLoginForm) => !showLoginForm)
+    setShowLoginButton((showLoginButton) => !showLoginButton)
    }
 
    const handleSignupClick = () => {
     setShowSignupForm((showSignupForm) => !showSignupForm)
+    setShowSignupButton((showButton) => !showButton)
    }
    
     useEffect(() => {
@@ -37,20 +41,20 @@ function Login(){
             <p className="accountQuestion">
                 Don't have and account? 
             </p>
-            <button 
+            {showSignupButton ? <button 
                 type="button"
                 onClick={handleSignupClick} >
                     Sign Up
-            </button>
+            </button> : null}
             {showSignupForm ? <SignUpForm /> : null}
            <p className="acountQuestion">
             Already have an account?
            </p>
-           <button 
+           {showLoginButton ? <button 
                 type="button"
                 onClick={handleLoginClick}>
                     Log In
-           </button>
+           </button> :null}
            {showLoginForm ? <LoginForm /> : null}
             
 
