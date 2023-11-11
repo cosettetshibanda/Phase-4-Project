@@ -12,8 +12,16 @@ function Login(){
     // const {loggedIn, loginUser} = useContext(UsersContext)
     // const {loggedIn, loginUser} = useContext(UsersContext)
     const [haveAccount, setHaveAccount] = useState(false)
+    const [showLoginForm, setShowLoginForm] = useState(false)
+    const [showSignupForm, setShowSignupForm] = useState(false)
 
-   
+   const handleLoginClick = () => {
+    setShowLoginForm((showLoginForm) => !showLoginForm)
+   }
+
+   const handleSignupClick = () => {
+    setShowSignupForm((showSignupForm) => !showSignupForm)
+   }
    
     useEffect(() => {
         if(haveAccount) {
@@ -31,19 +39,19 @@ function Login(){
             </p>
             <button 
                 type="button"
-                onClick={() => setHaveAccount(false)} >
+                onClick={handleSignupClick} >
                     Sign Up
             </button>
-            <SignUpForm />
+            {showSignupForm ? <SignUpForm /> : null}
            <p className="acountQuestion">
             Already have an account?
            </p>
            <button 
                 type="button"
-                onClick={() => setHaveAccount(true)}>
+                onClick={handleLoginClick}>
                     Log In
            </button>
-           <LoginForm />
+           {showLoginForm ? <LoginForm /> : null}
             
 
             
