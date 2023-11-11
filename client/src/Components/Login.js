@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom"
 
 
-function Login({onLogin}){
+function Login(){
     const navigate = useNavigate()
     const [haveAccount, setHaveAccount] = useState(false)
 
