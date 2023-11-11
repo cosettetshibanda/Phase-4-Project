@@ -71,7 +71,7 @@ function SignUpForm({onLogin}) {
                 onChange={handleChange}
                 required
             />
-            <input type="submit" value="Login" />
+            <input type="submit" value="Sign Up" />
         </form>
     )
 }
