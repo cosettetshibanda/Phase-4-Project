@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const UserContext = React.createContext();
+const UsersContext = React.createContext();
 
 const UsersProvider = ({ children }) => {
 
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([])
     const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(false);
-    const {setLoading} =useContext(ErrorsContext);
+
     
     useEffect(() => {
       fetch("/me")

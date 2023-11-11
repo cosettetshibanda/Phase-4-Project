@@ -1,11 +1,23 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom"
+import { UsersContext } from "./Context/UsersContext";
+
+
 
 
 function Login(){
     const navigate = useNavigate()
+    const {loggedIn, loginUser} = useContext(UsersContext)
+    // const {loggedIn, loginUser} = useContext(UsersContext)
     const [haveAccount, setHaveAccount] = useState(false)
 
+   useEffect(() => {
+    if(!loggedIn){
+        navigate("/")
+    }
+   }, [loggedIn, navigate,setErrors])
+   
+   
     useEffect(() => {
         if(haveAccount) {
             navigate("/login")
