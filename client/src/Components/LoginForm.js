@@ -1,6 +1,8 @@
-import {useState} from "react"
+import {useContext, useState} from "react"
+import { UsersContext } from "./Context/UsersContext";
 
-function LoginForm({onLogin}) {
+function LoginForm() {
+    const {setCurrentUser} = useContext(UsersContext)
 
     const [formData, setFormData] = useState({
         username: "",
@@ -22,7 +24,7 @@ function LoginForm({onLogin}) {
           body: JSON.stringify(formData)
         })
         .then(response => response.json())
-        .then(user => onLogin(user))
+        .then(user => setCurrentUser(user))
       };
 
 

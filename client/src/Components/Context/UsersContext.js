@@ -18,19 +18,19 @@ const UsersProvider = ({ children }) => {
       })
     }, [])
 
-//     const loginUser = (user) => {
-//         setCurrentUser(user);
-//         setLoggedIn(true);
-//       };
+    // const loginUser = (user) => {
+    //     setCurrentUser(user);
+    //     setLoggedIn(true);
+    //   };
        
-//       const logoutUser = () => {
-//         setCurrentUser({});
-//         setLoggedIn(false);
-//       };
+    //   const logoutUser = () => {
+    //     setCurrentUser({});
+    //     setLoggedIn(false);
+    //   };
 
-      const addUser = (user) => {
-        setUsers([...users, user])
-      };
+    //   const addUser = (user) => {
+    //     setCurrentUser([...users, user])
+    //   };
       
 //       const updateUserReviews = (updatedReview) => {
 //         const userToUpdate = users?.find(user => user.id === updatedReview.user_id)
@@ -93,7 +93,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ currentUser,addUser, updateUserReviews, updateUserDeletedReviews, updateUserAddedReviews }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

@@ -26,7 +26,6 @@ function Login(){
 
     return (
         <div>
-             <h1>Find the Best Car Seat For You!</h1>
             <p className="acountQuestion">
              Already have an account?
             </p>

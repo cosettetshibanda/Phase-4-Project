@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UsersContext } from "./Context/UsersContext";
 
-function SignUpForm({onLogin}) {
+function SignUpForm() {
+    const {setCurrentUser} = useContext(UsersContext)
     const [formData, setFormData] = useState({
         username: "",
         password: '',
@@ -25,7 +27,7 @@ function SignUpForm({onLogin}) {
             body: JSON.stringify(formData),
         }).then((r) => {
             if (r.ok) {
-                r.json().then((user) => onLogin(user))
+                r.json().then((user) => setCurrentUser(user))
             }
         })
       }
