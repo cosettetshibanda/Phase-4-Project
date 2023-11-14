@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 function SignUpForm({onLogin}) {
     const [formData, setFormData] = useState({
-        user_name: "",
+        username: "",
         password: '',
-        passwordConfirmation: "",
-        imageUrl: "",
+        password_confirmation: "",
+        image_url: "",
         bio: "",
       });
 
@@ -34,8 +34,8 @@ function SignUpForm({onLogin}) {
             <label>Username</label>
             <input
                 type="text"
-                name="user_name"
-                value={formData.user_name}
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 required
             />
@@ -58,8 +58,8 @@ function SignUpForm({onLogin}) {
             <label>Profile Image</label>
             <input
                 type="text"
-                name="imageUrl"
-                value={formData.imageUrl}
+                name="image_url"
+                value={formData.image_url}
                 onChange={handleChange}
                 required
             />

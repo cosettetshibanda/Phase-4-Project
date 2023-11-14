@@ -11,6 +11,10 @@ function NavBar({ user, setUser}) {
     return (
         <div>
             <h1>Find the Best Carseat For You!</h1>
+            <button 
+                 type="button" onClick={handleLogoutClick}>
+                     Log Out
+            </button>
         </div>
 
     )

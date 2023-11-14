@@ -4,20 +4,19 @@ const UsersContext = React.createContext();
 
 const UsersProvider = ({ children }) => {
 
-//     const [users, setUsers] = useState([])
-//     const [currentUser, setCurrentUser] = useState({});
-//     const [loggedIn, setLoggedIn] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
+    const [loggedIn, setLoggedIn] = useState(false);
 
     
-//     useEffect(() => {
-//       fetch("/me")
-//       .then(response => response.json())
-//       .then(data => {
-//         if(!data.errors) {
-//           loginUser(data)
-//         }
-//       })
-//     }, [setLoading])
+    useEffect(() => {
+      fetch("/me")
+      .then(response => response.json())
+      .then(data => {
+        if(!data.errors) {
+          setCurrentUser(data)
+        }
+      })
+    }, [])
 
 //     const loginUser = (user) => {
 //         setCurrentUser(user);
@@ -29,9 +28,9 @@ const UsersProvider = ({ children }) => {
 //         setLoggedIn(false);
 //       };
 
-//       const addUser = (user) => {
-//         setUsers([...users, user])
-//       };
+      const addUser = (user) => {
+        setUsers([...users, user])
+      };
       
 //       const updateUserReviews = (updatedReview) => {
 //         const userToUpdate = users?.find(user => user.id === updatedReview.user_id)
@@ -93,9 +92,9 @@ const UsersProvider = ({ children }) => {
   
 
   
-//       return(
-//           <UsersContext.Provider value={{ users, currentUser, loggedIn, loginUser, logoutUser, addUser, updateUserReviews, updateUserDeletedReviews, updateUserAddedReviews }}>{ children }</UsersContext.Provider>
-//       )
+      return(
+          <UsersContext.Provider value={{ currentUser,addUser, updateUserReviews, updateUserDeletedReviews, updateUserAddedReviews }}>{ children }</UsersContext.Provider>
+      )
   
    }
   

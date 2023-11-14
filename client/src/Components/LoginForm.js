@@ -3,7 +3,7 @@ import {useState} from "react"
 function LoginForm({onLogin}) {
 
     const [formData, setFormData] = useState({
-        user_name: "",
+        username: "",
         password: '',
       });
     
@@ -25,14 +25,14 @@ function LoginForm({onLogin}) {
         .then(user => onLogin(user))
       };
 
-      
+
     return (
         <form onSubmit={handleSubmit}>
             <label>Username</label>
             <input
                 type="text"
-                name="user_name"
-                value={formData.user_name}
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 required
             />
