@@ -1,7 +1,7 @@
 class CarseatsController < ApplicationController
     def index
         carseats = Carseat.all 
-        render json: carseats, status: ;ok
+        render json: carseats, status: :ok
     end
 
     def show

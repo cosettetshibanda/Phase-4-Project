@@ -1,3 +1,3 @@
 class CarseatSerializer < ActiveModel::Serializer
-  attributes :id, :name, :type, :expiration, :price, :features, :img
+  attributes :id, :name, :mode, :expiration, :price, :features, :img
 end

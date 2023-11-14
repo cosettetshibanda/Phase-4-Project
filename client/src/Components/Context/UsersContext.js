@@ -18,6 +18,12 @@ const UsersProvider = ({ children }) => {
       })
     }, [])
 
+    const getCarSeats = () => {
+        if(currentUser) {
+            fetch("/carseats")
+        }
+    }
+
     // const loginUser = (user) => {
     //     setCurrentUser(user);
     //     setLoggedIn(true);
