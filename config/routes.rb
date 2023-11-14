@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :carseats
   resources :reviews
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
