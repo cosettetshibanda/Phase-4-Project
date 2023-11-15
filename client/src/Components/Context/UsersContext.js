@@ -5,7 +5,8 @@ const UsersContext = React.createContext();
 const UsersProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState({});
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [carSeats, setCarSeats] = useState({})
+    const [errors, setErrors] = useState([]);
 
     
     useEffect(() => {
@@ -18,12 +19,13 @@ const UsersProvider = ({ children }) => {
       })
     }, [])
 
-    const getCarSeats = () => {
-        if(currentUser) {
-            fetch("/carseats")
-        }
-    }
+    useEffect(() => {
+            fetch("/carseats") 
+            .then(r => r.json())
+            .then(data => setCarSeats(data))
+    }, [])
 
+    console.log(carSeats)
     // const loginUser = (user) => {
     //     setCurrentUser(user);
     //     setLoggedIn(true);
@@ -99,7 +101,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ errors, setErrors, currentUser, setCurrentUser, carSeats }}>{ children }</UsersContext.Provider>
       )
   
    }
