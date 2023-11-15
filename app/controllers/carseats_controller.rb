@@ -1,4 +1,7 @@
 class CarseatsController < ApplicationController
+
+    before_action :carseat_find, only: [:show]
+
     def index
         carseats = Carseat.all 
         render json: carseats, status: :ok

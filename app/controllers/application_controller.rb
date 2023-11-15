@@ -13,10 +13,6 @@ class ApplicationController < ActionController::API
     render json: { errors: ["You are already logged in"]}, status: :unauthorized if session.include? :user_id
   end
   
-  def authorize_user_resource(user_id)
-    render json: { errors: ["You are not authorized to edit this resource"]}, status: :unauthorized unless user_id == current_user.id 
-  end
-  
 
   def authorize
     @current_user = User.find_by(id: session[:user_id])
