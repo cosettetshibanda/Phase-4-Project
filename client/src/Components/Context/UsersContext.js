@@ -6,7 +6,7 @@ const UsersContext = React.createContext();
 const UsersProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState({});
-    // const [carSeats, setCarSeats] = useState({})
+    const [carSeats, setCarSeats] = useState([])
     const [errors, setErrors] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false)
 
@@ -18,7 +18,7 @@ const UsersProvider = ({ children }) => {
       .then(response => response.json())
       .then(data => {
         if(!data.errors) {
-          setCurrentUser(data)
+          loginUser(data)
         }
       })
     }, [])
@@ -30,27 +30,27 @@ const UsersProvider = ({ children }) => {
     // }, [])
 
 
-    // const loadCarSeats = () => {
-    //     if(loggedIn) {
-    //           fetch("/carseats")
-    //           .then(response => response.json())
-    //           .then(data => setCarSeats(data))
-    //     }
-    //       };
+    const loadCarSeats = () => {
+        if(loggedIn) {
+              fetch("/carseats")
+              .then(response => response.json())
+              .then(data => setCarSeats(data))
+        }
+          };
   
-    //   useEffect(loadCarSeats, [loggedIn, navigate])
+      useEffect(loadCarSeats, [loggedIn, navigate])
 
 
 
-    // const loginUser = (user) => {
-    //     setCurrentUser(user);
-    //     setLoggedIn(true);
-    //   };
+    const loginUser = (user) => {
+        setCurrentUser(user);
+        setLoggedIn(true);
+      };
        
-    //   const logoutUser = () => {
-    //     setCurrentUser({});
-    //     setLoggedIn(false);
-    //   };
+      const logoutUser = () => {
+        setCurrentUser({});
+        setLoggedIn(false);
+      };
 
     //   const addUser = (user) => {
     //     setCurrentUser([...users, user])
@@ -117,7 +117,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ errors, setErrors, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ loginUser, logoutUser, carSeats, setCarSeats, errors, setErrors, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

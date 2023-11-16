@@ -22,7 +22,7 @@ function NavBar() {
             <li><Link to="mycarseats">My Car Seats</Link></li> 
             <li><Link to="/reviews">Reviews</Link></li>
             <li><Link to="#" onClick={handleLogoutClick}>Logout</Link></li>
-            <CarSeatList />
+            {/* <CarSeatList /> */}
           </>
         )
       }

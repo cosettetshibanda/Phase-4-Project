@@ -5,19 +5,15 @@ import CarSeatCard from "./CarSeatCard";
 
 
 function CarSeatList() {
-    const [carSeats, setCarSeats] = useState([])
-    const { setErrors, currentUser, setCurrentUser} = useContext(UsersContext)
-    const navigate = useNavigate()
+    // const navigate = useNavigate();
+    const { carSeats, loggedIn, setErrors} = useContext(UsersContext)
 
-    useEffect(() => {
-        if(!currentUser){
-            return "Please Log In"
-        } else {
-            fetch("/carseats") 
-            .then(r => r.json())
-            .then(data => setCarSeats(data))
-        }
-}, [])
+
+//     useEffect(() => {
+//             fetch("/carseats") 
+//             .then(r => r.json())
+//             .then(data => setCarSeats(data))
+// }, [])
 
 
 // const loadCarSeats = () => {
@@ -37,10 +33,19 @@ function CarSeatList() {
 
 //   console.log(carSeats)
 
+// useEffect(() => {
+//     if(!loggedIn) {
+//       navigate("/login")
+//     }
+//     return () => {
+//       setErrors([])
+//     }
+//   }, [ loggedIn, navigate, setErrors]);
+
     const carSeatCards = carSeats.map(carSeat => <CarSeatCard key = {carSeat.id} carSeat={carSeat}/>)
 
     return (
-        <div>{carSeatCards} </div>
+        <div>{carSeatCards}</div>
     )
 
 
