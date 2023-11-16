@@ -1,6 +1,6 @@
 class CarseatsController < ApplicationController
-
     before_action :carseat_find, only: [:show]
+    skip_before_action :authorize, only: [:index, :show, :create]
 
     def index
         carseats = Carseat.all 
