@@ -14,7 +14,6 @@ function App() {
     <main>
       <UsersProvider>
       <NavBar />
-      <CarSeatList />
       <Routes>
         <Route path="/login" element={<Login/>} />
       </Routes>

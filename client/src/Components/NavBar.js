@@ -3,6 +3,8 @@ import { Link,} from "react-router-dom";
 import { useContext } from "react"
 import { UsersContext } from "./Context/UsersContext"
 import Login from "./Login";
+import CarSeatCard from "./CarSeatCard";
+import CarSeatList from "./CarSeatList";
 
 function NavBar() {
 
@@ -16,11 +18,11 @@ function NavBar() {
     const loggedInLinks = () => {
         return(
           <>
-            <li><Link to="/carseats">Car Seats</Link></li>
             <li><Link to="/carseats/new">Add Car Seat</Link></li>
             <li><Link to="mycarseats">My Car Seats</Link></li> 
             <li><Link to="/reviews">Reviews</Link></li>
             <li><Link to="#" onClick={handleLogoutClick}>Logout</Link></li>
+            <CarSeatList />
           </>
         )
       }

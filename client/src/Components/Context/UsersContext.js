@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UsersContext = React.createContext();
 
 const UsersProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState({});
-    const [carSeats, setCarSeats] = useState({})
+    // const [carSeats, setCarSeats] = useState({})
     const [errors, setErrors] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false)
+
+    const navigate = useNavigate()
 
     
     useEffect(() => {
@@ -19,13 +23,25 @@ const UsersProvider = ({ children }) => {
       })
     }, [])
 
-    useEffect(() => {
-            fetch("/carseats") 
-            .then(r => r.json())
-            .then(data => setCarSeats(data))
-    }, [])
+    // useEffect(() => {
+    //         fetch("/carseats") 
+    //         .then(r => r.json())
+    //         .then(data => setCarSeats(data))
+    // }, [])
 
-    console.log(carSeats)
+
+    // const loadCarSeats = () => {
+    //     if(loggedIn) {
+    //           fetch("/carseats")
+    //           .then(response => response.json())
+    //           .then(data => setCarSeats(data))
+    //     }
+    //       };
+  
+    //   useEffect(loadCarSeats, [loggedIn, navigate])
+
+
+
     // const loginUser = (user) => {
     //     setCurrentUser(user);
     //     setLoggedIn(true);
@@ -101,7 +117,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ errors, setErrors, currentUser, setCurrentUser, carSeats }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ errors, setErrors, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }
