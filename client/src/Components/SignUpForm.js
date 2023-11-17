@@ -1,8 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UsersContext } from "./Context/UsersContext";
+import { useNavigate } from "react-router-dom";
+import { ErrorsContext } from "./Context/ErrorsContext";
 
 function SignUpForm() {
-    const {setCurrentUser} = useContext(UsersContext)
+    const navigate = useNavigate()
+    const {setErrors, loading} = useContext(ErrorsContext)
+    const {loggedIn, loginUser, addUser} = useContext(UsersContext)
+
+    useEffect(() => {
+        if(!loading && loggedIn) {
+            navigate("/")
+        }
+        return () => {
+            setErrors([])
+        }
+    }, [loading, loggedIn, navigate, setErrors])
+
+
     const [formData, setFormData] = useState({
         username: "",
         password: '',
@@ -25,12 +40,19 @@ function SignUpForm() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(formData),
-        }).then((r) => {
-            if (r.ok) {
-                r.json().then((user) => setCurrentUser(user))
-            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.errors) {
+                setErrors(data.errors)
+            } else {
+                addUser(data)
+                loginUser(data)
+                navigate("/")
+                }
         })
       }
+      
     return (
         <form onSubmit={handleSubmit}>
             <label>Username</label>
