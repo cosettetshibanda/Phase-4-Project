@@ -12,7 +12,7 @@ const ReviewsProvider = ({ children }) => {
       if(loggedIn) {
         fetch("/reviews")
         .then(response => response.json())
-        .then(data => setReviews(data))
+        .then(setReviews)
         }
       }, [loggedIn]);
     

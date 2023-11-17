@@ -1,83 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ErrorsContext } from "./ErrorsContext";
 
-const UsersContext = React.createContext();
+const UsersContext = createContext({});
 
 const UsersProvider = ({ children }) => {
-
     const [currentUser, setCurrentUser] = useState({});
-    const [carSeats, setCarSeats] = useState([])
-    const [errors, setErrors] = useState([]);
-    // const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(false)
+    const {setLoading} = useContext(ErrorsContext)
 
-    console.log(currentUser)
-    const navigate = useNavigate()
 
-    
     useEffect(() => {
       fetch("/me")
       .then(response => response.json())
       .then(data => {
-          setCurrentUser(data)
-      })
-    }, [])
-
-    // useEffect(() => {
-    //         fetch("/carseats") 
-    //         .then(r => r.json())
-    //         .then(data => setCarSeats(data))
-    // }, [])
-
-
-    const loadCarSeats = () => {
-        if(currentUser) {
-              fetch("/carseats")
-              .then(response => response.json())
-              .then(data => setCarSeats(data))
+        if(!data.errors){
+            loginUser(data)
         }
-          };
-  
-      useEffect(loadCarSeats, [currentUser, navigate])
+      })
+    }, [setLoading])
 
 
 
-    // const loginUser = (user) => {
-    //     setCurrentUser(user);
-    //     setLoggedIn(true);
-    //   };
+    const loginUser = (user) => {
+        setCurrentUser(user);
+        setLoggedIn(true);
+      };
        
-    //   const logoutUser = () => {
-    //     setCurrentUser({});
-    //     setLoggedIn(false);
-    //   };
+      const logoutUser = () => {
+        setCurrentUser({});
+        setLoggedIn(false);
+      };
 
-    //   const addUser = (user) => {
-    //     setCurrentUser([...users, user])
-    //   };
+      const addUser = (user) => {
+        setCurrentUser([...users, user])
+      };
       
-//       const updateUserReviews = (updatedReview) => {
-//         const userToUpdate = users?.find(user => user.id === updatedReview.user_id)
-//         const updatedUserReviews = userToUpdate.reviews?.map(review => {
-//           if(review.id === updatedReview.id) {
-//             return updatedReview;
-//           } else {
-//             return review;
-//           }
-//         })
+    //   const updateUserReviews = (updatedReview) => {
+    //     const userToUpdate = users?.find(user => user.id === updatedReview.user_id)
+    //     const updatedUserReviews = userToUpdate.reviews?.map(review => {
+    //       if(review.id === updatedReview.id) {
+    //         return updatedReview;
+    //       } else {
+    //         return review;
+    //       }
+    //     })
       
-//         const updatedUser = {
-//           ...userToUpdate,
-//           reviews: updatedUserReviews
-//         }
-//         const updatedUsersState = users.map(user => {
-//           if(user.id === updatedUser.id) {
-//             return updatedUser
-//           } else {
-//             return user
-//           }
-//         })
-//         setUsers(updatedUsersState)
-//       }
+    //     const updatedUser = {
+    //       ...userToUpdate,
+    //       reviews: updatedUserReviews
+    //     }
+    //     const updatedUsersState = users.map(user => {
+    //       if(user.id === updatedUser.id) {
+    //         return updatedUser
+    //       } else {
+    //         return user
+    //       }
+    //     })
+    //     setUsers(updatedUsersState)
+    //   }
   
 //       const updateUserDeletedReviews = (deletedReview) => {
 //         const userToUpdate = users?.find(user => user.id === deletedReview.user_id)

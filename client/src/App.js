@@ -6,22 +6,37 @@ import NavBar from './Components/NavBar';
 import { UsersContext, UsersProvider } from './Components/Context/UsersContext';
 import CarSeatList from './Components/CarSeatList';
 import CarSeatForm from './Components/CarSeatForm';
+import { ReviewsProvider } from './Components/Context/ReviewsContext';
+import { CarSeatProvider } from './Components/Context/CarSeatContext';
+import Errors from './Components/Errors';
+import Home from './Components/Home';
+import CarSeatReviews from './Components/CarSeatReviews';
 
 
 
 function App() {
+  const [loading, setLoading] = useState(true)
+
 
   return (
     <main>
-      <UsersProvider>
-      <NavBar />
-      <Routes>
-        <Route path="/login" element={<Login/>} />
-        <Route path="/carseats/new" element={<CarSeatForm />} />
-        <Route path="/carseats" element={<CarSeatList/>} />
-      </Routes>
-      <CarSeatList />
-      </UsersProvider>
+      <ErrorsProvider loading={loading} setLoading={setLoading}>
+        <UsersProvider>
+          <ReviewsProvider >
+            <CarSeatProvider >
+              <NavBar />
+              <Errors />
+              {loading ? <h1>Loading... </h1> : <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/carseats" element={<CarSeatList/>} />
+                <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
+                <Route path="/carseats/new" element={<CarSeatForm />} />
+                <Route path="/login" element={<Login/>} />
+              </Routes>}
+            </CarSeatProvider>
+          </ReviewsProvider>
+        </UsersProvider>
+      </ErrorsProvider>
     </main>
   );
 }
