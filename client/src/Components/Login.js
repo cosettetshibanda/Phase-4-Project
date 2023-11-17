@@ -27,14 +27,14 @@ function Login({loading}){
 //     setShowSignupButton((showButton) => !showButton)
 //    }
 
-    useEffect(() => {
-        if(!loggedIn) {
-            navigate("/")
-        }
-        return () => {
-            setErrors([])
-        }
-    }, [loading, loggedIn, navigate, setErrors])
+    // useEffect(() => {
+    //     if(!loggedIn) {
+    //         navigate("/")
+    //     }
+    //     return () => {
+    //         setErrors([])
+    //     }
+    // }, [loading, loggedIn, navigate, setErrors])
 
     const [formData, setFormData] = useState({
         username: "",

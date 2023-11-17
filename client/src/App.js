@@ -2,7 +2,7 @@ import './App.css';
 import Login from './Components/Login';
 import { Routes, Route } from "react-router-dom";
 import NavBar from './Components/NavBar';
-import { UsersProvider } from './Components/Context/UsersContext';
+import { UsersContext, UsersProvider } from './Components/Context/UsersContext';
 import CarSeatList from './Components/CarSeatList';
 import CarSeatForm from './Components/CarSeatForm';
 import { ReviewsProvider } from './Components/Context/ReviewsContext';
@@ -17,11 +17,12 @@ import ReviewEdit from './Components/ReviewEdit';
 import ReviewForm from './Components/ReviewForm';
 import UserReviews from './Components/UserReviews';
 import SignUpForm from './Components/SignUpForm';
+import { useContext } from 'react';
 
 
 
 function App() {
-
+const {currentUser} = useContext(UsersContext)
 
 
   return (
@@ -32,8 +33,10 @@ function App() {
             <CarSeatProvider >
               <NavBar />
               <Errors />
-                <Routes>
-                <Route path="/" element={<Home />} />
+                {!currentUser ? <Routes>
+                  <Route path="/login" element={<Login/>} />
+                <Route exact path="/" element={<Home />} />
+                <Route path="/signup" element={<SignUpForm />} /> </Routes> : <Routes>
                 <Route path="/carseats" element={<CarSeatList/>} />
                 <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
                 <Route path="/carseats/new" element={<CarSeatForm />} />
@@ -42,9 +45,9 @@ function App() {
                 <Route path="/reviews/:id/edit" element={<ReviewEdit />}/>
                 <Route path="/books/:id/new-review" element={<ReviewForm />} />
                 <Route path="/users/:user_id/reviews" element={<UserReviews />} />
-                <Route path="/login" element={<Login/>} />
-                <Route path="/signup" element={<SignUpForm />} />
-              </Routes>
+                {/* <Route path="/login" element={<Login/>} />
+                <Route path="/signup" element={<SignUpForm />} /> */}
+              </Routes>}
             </CarSeatProvider>
           </ReviewsProvider>
         </UsersProvider>

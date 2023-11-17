@@ -8,14 +8,14 @@ function SignUpForm() {
     const {setErrors} = useContext(ErrorsContext)
     const {loggedIn, loginUser, addUser} = useContext(UsersContext)
 
-    useEffect(() => {
-        if(!loggedIn) {
-            navigate("/")
-        }
-        return () => {
-            setErrors([])
-        }
-    }, [loggedIn, navigate, setErrors])
+    // useEffect(() => {
+    //     if(!loggedIn) {
+    //         navigate("/")
+    //     }
+    //     return () => {
+    //         setErrors([])
+    //     }
+    // }, [loggedIn, navigate, setErrors])
 
 
     const [formData, setFormData] = useState({
@@ -46,7 +46,6 @@ function SignUpForm() {
             if(data.errors) {
                 setErrors(data.errors)
             } else {
-                addUser(data)
                 loginUser(data)
                 navigate("/")
                 }
