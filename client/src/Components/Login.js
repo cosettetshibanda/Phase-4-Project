@@ -28,7 +28,7 @@ function Login({loading}){
 //    }
 
     useEffect(() => {
-        if(!loading && loggedIn) {
+        if(!loggedIn) {
             navigate("/")
         }
         return () => {

@@ -9,16 +9,16 @@ import ReviewCard from "./ReviewCard";
 const CarSeatReviews = () => {
     const navigate = useNavigate();
     const {carseat_id} = useParams();
-    const {loading, loggedIn} = useContext(UsersContext);
+    const {loggedIn} = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {reviews, handleDeleteReview} = useContext(ReviewsContext);
 
     useEffect(() => {
-        if(!loading && !loggedIn){
+        if(!loggedIn){
            navigate("/login")
            }
             setErrors([]);
-    }, [ loggedIn, loading, navigate, setErrors]);
+    }, [ loggedIn, navigate, setErrors]);
 
     const carSeatReviews = reviews?.filter((review) => review.carseat_id === parseInt(carseat_id, 10))
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 // import { useNavigate } from "react-router-dom";
-import { ErrorsContext } from "./ErrorsContext";
+
 
 const UsersContext = createContext({});
 
@@ -8,7 +8,7 @@ const UsersProvider = ({ children }) => {
     const [users, setUsers] = useState([])
     const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(false)
-    const {setLoading} = useContext(ErrorsContext)
+    // const {setLoading} = useContext(ErrorsContext)
 
 
     useEffect(() => {
@@ -16,37 +16,36 @@ const UsersProvider = ({ children }) => {
       .then(response => response.json())
       .then(data => {
         if(!data.errors){
-            loginUser(data)
+            setCurrentUser(data)
         }
       })
-    }, [setLoading])
+    }, [])
 
 
-    useEffect(() => {
-        fetch("/users")
-        .then(response => response.json())
-        .then(data => {
-          if(!data.errors) {
-            setUsers(data)
-          }
-          setLoading(false)
-        })
-      }, [loggedIn, setLoading])
+    // useEffect(() => {
+    //     fetch("/users")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       if(!data.errors) {
+    //         setUsers(data)
+    //       }
+    //       setLoading(false)
+    //     })
+    //   }, [loggedIn, setLoading])
 
 
 
-    const loginUser = (user) => {
-        setCurrentUser(user);
-        setLoggedIn(true);
+    const loginUser = () => {
+        if(currentUser) {
+            setLoggedIn(true);
+        } else {
+            setLoggedIn(false)
+        }
       };
        
       const logoutUser = () => {
         setCurrentUser({});
         setLoggedIn(false);
-      };
-
-      const addUser = (user) => {
-        setCurrentUser([...users, user])
       };
       
     //   const updateUserReviews = (updatedReview) => {
@@ -110,7 +109,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ users, loginUser, logoutUser, loggedIn, addUser, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ users, loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

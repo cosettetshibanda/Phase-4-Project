@@ -5,17 +5,17 @@ import { ErrorsContext } from "./Context/ErrorsContext";
 
 function SignUpForm() {
     const navigate = useNavigate()
-    const {setErrors, loading} = useContext(ErrorsContext)
+    const {setErrors} = useContext(ErrorsContext)
     const {loggedIn, loginUser, addUser} = useContext(UsersContext)
 
     useEffect(() => {
-        if(!loading && loggedIn) {
+        if(!loggedIn) {
             navigate("/")
         }
         return () => {
             setErrors([])
         }
-    }, [loading, loggedIn, navigate, setErrors])
+    }, [loggedIn, navigate, setErrors])
 
 
     const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ function SignUpForm() {
                 }
         })
       }
-      
+
     return (
         <form onSubmit={handleSubmit}>
             <label>Username</label>

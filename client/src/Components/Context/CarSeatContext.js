@@ -14,9 +14,11 @@ const CarSeatProvider = ({children}) => {
         if(loggedIn) {
             fetch("/carseats")
             .then(r => r.json())
-            .then(setCarSeats)
+            .then(data => setCarSeats(data))
         }
     }
+
+    console.log(carSeats)
 
     useEffect(loadCarSeats, [loggedIn, navigate])
 

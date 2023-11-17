@@ -6,7 +6,7 @@ import { UsersContext } from "./Context/UsersContext";
 import { ErrorsContext } from "./Context/ErrorsContext";
 
 
-const ReviewForm = ({ loading }) => {
+const ReviewForm = () => {
     
     const navigate = useNavigate();
     const {addReview} = useContext(ReviewsContext);
@@ -23,7 +23,7 @@ const ReviewForm = ({ loading }) => {
     });
 
     useEffect(() => {
-        if(!loading && !loggedIn) {
+        if(!loggedIn) {
             navigate("/")
         }
         if(carSeats.length > 0) {
@@ -34,7 +34,7 @@ const ReviewForm = ({ loading }) => {
                 summary: "",
             })
         }
-    }, [ loading, loggedIn, navigate, id, setErrors, carSeats, carSeat ]);
+    }, [ loggedIn, navigate, id, setErrors, carSeats, carSeat ]);
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})

@@ -10,17 +10,17 @@ function CarSeatList() {
     const navigate = useNavigate();
     const {carSeats} = useContext(CarSeatContext)
     const { loggedIn} = useContext(UsersContext)
-    const {setErrors, loading} = useContext(ErrorsContext)
+    const {setErrors} = useContext(ErrorsContext)
 
 
     useEffect(() => {
-        if(!loading && !loggedIn){
+        if(!loggedIn){
             navigate("/login")
         }
         return() => {
             setErrors([])
         }
-    }, [loading, loggedIn, navigate, setErrors])
+    }, [loggedIn, navigate, setErrors])
 
 
 //     useEffect(() => {

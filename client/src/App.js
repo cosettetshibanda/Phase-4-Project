@@ -1,5 +1,4 @@
 import './App.css';
-import { useState } from 'react';
 import Login from './Components/Login';
 import { Routes, Route } from "react-router-dom";
 import NavBar from './Components/NavBar';
@@ -22,18 +21,18 @@ import SignUpForm from './Components/SignUpForm';
 
 
 function App() {
-  const [loading, setLoading] = useState(true)
+
 
 
   return (
     <main>
-      <ErrorsProvider loading={loading} setLoading={setLoading}>
+      <ErrorsProvider >
         <UsersProvider>
           <ReviewsProvider >
             <CarSeatProvider >
               <NavBar />
               <Errors />
-              {loading ? <h1>Loading... </h1> : <Routes>
+                <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/carseats" element={<CarSeatList/>} />
                 <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
@@ -45,7 +44,7 @@ function App() {
                 <Route path="/users/:user_id/reviews" element={<UserReviews />} />
                 <Route path="/login" element={<Login/>} />
                 <Route path="/signup" element={<SignUpForm />} />
-              </Routes>}
+              </Routes>
             </CarSeatProvider>
           </ReviewsProvider>
         </UsersProvider>

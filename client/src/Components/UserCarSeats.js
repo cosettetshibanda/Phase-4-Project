@@ -8,17 +8,17 @@ import { ReviewsContext } from "./Context/ReviewsContext"
 const UserCarSeats = () => {
     const navigate = useNavigate()
     const {loggedIn, currentUser} = useContext(UsersContext)
-    const {loading, setErrors} = useContext(ErrorsContext)
+    const {setErrors} = useContext(ErrorsContext)
     const {reviews} = useContext(ReviewsContext)
 
     useEffect(() => {
-        if(!loading && !loggedIn) {
+        if(!loggedIn) {
             navigate("/")
         }
         return () => {
             setErrors([])
         }
-    }, [loading, loggedIn, navigate, setErrors])
+    }, [loggedIn, navigate, setErrors])
 
     const myReviews = reviews.filter((review) => review.user_id === parseInt(currentUser.id, 10))
     const myCarSeatList = myReviews?.map(review => <li key={review.carseat.id}><Link to={`/books/${review.book.id}`}>{review.book.title}</Link></li>)

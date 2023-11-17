@@ -4,7 +4,7 @@ import { ReviewsContext } from "./Context/ReviewsContext";
 import { UsersContext } from "./Context/UsersContext";
 
 
-const ReviewEdit = ({ loading }) => {
+const ReviewEdit = () => {
 
     const navigate = useNavigate();
     const {reviews, editReview} = useContext(ReviewsContext);
@@ -19,13 +19,13 @@ const ReviewEdit = ({ loading }) => {
     });
 
     useEffect(() => {
-        if(!loading && !loggedIn) {
+        if(!loggedIn) {
             navigate("/")
         }
 
         if(reviews.length > 0) {
             const review = reviews.find(review => review.id === parseInt(id, 10));
-            if(!loading && currentUser.id !== review.user.id) {
+            if(currentUser.id !== review.user.id) {
                 navigate("/")
             }
             setFormData({
@@ -35,7 +35,7 @@ const ReviewEdit = ({ loading }) => {
                 summary: review.summary
             })
         }
-    }, [reviews, loading, loggedIn, currentUser, navigate, id]);
+    }, [reviews, loggedIn, currentUser, navigate, id]);
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})

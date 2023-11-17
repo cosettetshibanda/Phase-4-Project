@@ -12,13 +12,13 @@ function CarSeatForm ({loading}) {
     const {setErrors} = useContext(ErrorsContext)
 
     useEffect(() => {
-        if(!loading && !loggedIn) {
+        if(!loggedIn) {
             navigate("/")
         }
         return() => {
             setErrors([])
         }
-    }, [loading, loggedIn, navigate, setErrors])
+    }, [loggedIn, navigate, setErrors])
 
 
     // const { carSeats, setCarSeats} = useContext(UsersContext)
