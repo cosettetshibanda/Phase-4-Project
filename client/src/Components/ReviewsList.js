@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { ReviewsContext } from "./Context/ReviewsContext";
 import { UsersContext } from "./Context/UsersContext";
 import ReviewCard from "./ReviewCard";
+import { ErrorsContext } from "./Context/ErrorsContext";
 
 
 function ReviewsList () {
     const navigate = useNavigate()
     const {reviews, handleDeleteReview} = useContext(ReviewsContext)
     const {loggedIn, currentUser} = useContext(UsersContext)
+    const {loading} = useContext(ErrorsContext)
 
     useEffect(() => {
         if(!loading && !loggedIn) {
