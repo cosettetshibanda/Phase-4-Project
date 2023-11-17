@@ -42,7 +42,7 @@ function CarSeatList() {
 //     }
 //   }, [ loggedIn, navigate, setErrors]);
 
-    const carSeatCards = carSeats.map(carSeat => <CarSeatCard key = {carSeat.id} carSeat={carSeat}/>)
+    const carSeatCards = carSeats.map(carSeat => <CarSeatCard key={carSeat.id} carSeat={carSeat}/>)
 
     return (
         <div>{carSeatCards}</div>

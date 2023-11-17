@@ -1,6 +1,6 @@
 class CarseatsController < ApplicationController
     before_action :carseat_find, only: [:show]
-    skip_before_action :authorize, only: [:index, :show, :create]
+  
 
     def index
         carseats = Carseat.all 
@@ -19,7 +19,7 @@ class CarseatsController < ApplicationController
     end
 
     def create
-        carseat = carseat.create!(carseat_params)
+        carseat = Carseat.create!(carseat_params)
         render json: carseat, status: :created
     end
 
@@ -32,7 +32,7 @@ class CarseatsController < ApplicationController
     private
 
     def carseat_find
-        carseat.find(params[:id])
+        Carseat.find(params[:id])
     end
 
     def carseat_params

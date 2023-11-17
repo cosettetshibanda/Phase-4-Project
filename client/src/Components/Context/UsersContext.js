@@ -8,8 +8,9 @@ const UsersProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState({});
     const [carSeats, setCarSeats] = useState([])
     const [errors, setErrors] = useState([]);
-    const [loggedIn, setLoggedIn] = useState(false)
+    // const [loggedIn, setLoggedIn] = useState(false)
 
+    console.log(currentUser)
     const navigate = useNavigate()
 
     
@@ -17,9 +18,7 @@ const UsersProvider = ({ children }) => {
       fetch("/me")
       .then(response => response.json())
       .then(data => {
-        if(!data.errors) {
-          loginUser(data)
-        }
+          setCurrentUser(data)
       })
     }, [])
 
@@ -31,26 +30,26 @@ const UsersProvider = ({ children }) => {
 
 
     const loadCarSeats = () => {
-        if(loggedIn) {
+        if(currentUser) {
               fetch("/carseats")
               .then(response => response.json())
               .then(data => setCarSeats(data))
         }
           };
   
-      useEffect(loadCarSeats, [loggedIn, navigate])
+      useEffect(loadCarSeats, [currentUser, navigate])
 
 
 
-    const loginUser = (user) => {
-        setCurrentUser(user);
-        setLoggedIn(true);
-      };
+    // const loginUser = (user) => {
+    //     setCurrentUser(user);
+    //     setLoggedIn(true);
+    //   };
        
-      const logoutUser = () => {
-        setCurrentUser({});
-        setLoggedIn(false);
-      };
+    //   const logoutUser = () => {
+    //     setCurrentUser({});
+    //     setLoggedIn(false);
+    //   };
 
     //   const addUser = (user) => {
     //     setCurrentUser([...users, user])
@@ -117,7 +116,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ loginUser, logoutUser, carSeats, setCarSeats, errors, setErrors, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ carSeats, setCarSeats, errors, setErrors, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

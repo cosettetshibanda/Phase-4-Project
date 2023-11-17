@@ -20,6 +20,7 @@ function App() {
         <Route path="/carseats/new" element={<CarSeatForm />} />
         <Route path="/carseats" element={<CarSeatList/>} />
       </Routes>
+      <CarSeatList />
       </UsersProvider>
     </main>
   );
