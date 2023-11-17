@@ -38,6 +38,7 @@ function App() {
                 <Route path="/mycarseats" element={<UserCarSeats />} />
                 <Route path="/reviews" element={<ReviewsList />} />
                 <Route path="/reviews/:id/edit" element={<ReviewEdit />}/>
+                <Route path="/books/:id/new-review" element={<ReviewForm  />} />
                 <Route path="/login" element={<Login/>} />
               </Routes>}
             </CarSeatProvider>
