@@ -5,6 +5,7 @@ import { ErrorsContext } from "./ErrorsContext";
 const UsersContext = createContext({});
 
 const UsersProvider = ({ children }) => {
+    const [users, setUsers] = useState([])
     const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(false)
     const {setLoading} = useContext(ErrorsContext)

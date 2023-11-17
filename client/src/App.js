@@ -1,9 +1,9 @@
 import './App.css';
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import Login from './Components/Login';
 import { Routes, Route } from "react-router-dom";
 import NavBar from './Components/NavBar';
-import { UsersContext, UsersProvider } from './Components/Context/UsersContext';
+import { UsersProvider } from './Components/Context/UsersContext';
 import CarSeatList from './Components/CarSeatList';
 import CarSeatForm from './Components/CarSeatForm';
 import { ReviewsProvider } from './Components/Context/ReviewsContext';

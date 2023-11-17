@@ -1,12 +1,27 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { UsersContext } from './Context/UsersContext';
+import { CarSeatContext } from './Context/CarSeatContext';
+import { ErrorsContext } from './Context/ErrorsContext';
 
 
-function CarSeatForm () {
+function CarSeatForm ({loading}) {
     const navigate = useNavigate();
+    const {addCarSeat} = useContext(CarSeatContext)
+    const {loggedIn} = useContext(UsersContext)
+    const {setErrors} = useContext(ErrorsContext)
 
-    const { carSeats, setCarSeats} = useContext(UsersContext)
+    useEffect(() => {
+        if(!loading && !loggedIn) {
+            navigate("/")
+        }
+        return() => {
+            setErrors([])
+        }
+    }, [loading, loggedIn, navigate, setErrors])
+
+
+    // const { carSeats, setCarSeats} = useContext(UsersContext)
     const [formData, setFormData] = useState({
         name: "",
         mode: "",
@@ -17,9 +32,9 @@ function CarSeatForm () {
     })
     
     
-    const addCarSeat = (carSeatObj) => {
-         setCarSeats([...carSeats, carSeatObj])
-    }
+    // const addCarSeat = (carSeatObj) => {
+    //      setCarSeats([...carSeats, carSeatObj])
+    // }
     
     
     const handleChange = (event) => {
@@ -38,9 +53,13 @@ function CarSeatForm () {
         })
         .then(response => response.json())
         .then(data => {
+            if(data.errors) {
+                setErrors(data.errors)
+            } else {
                 addCarSeat(data)
+                navigate("/books")
             }
-        )
+        })
         setFormData({
             name: "",
             mode: "",
