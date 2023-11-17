@@ -8,7 +8,7 @@ import ReviewCard from "./ReviewCard";
 
 const CarSeatReviews = () => {
     const navigate = useNavigate();
-    const {book_id} = useParams();
+    const {carseat_id} = useParams();
     const {loading, loggedIn} = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {reviews, handleDeleteReview} = useContext(ReviewsContext);
@@ -20,7 +20,7 @@ const CarSeatReviews = () => {
             setErrors([]);
     }, [ loggedIn, loading, navigate, setErrors]);
 
-    const carSeatReviews = reviews?.filter((review) => review.carseat_id === parseInt(review.carseat_id, 10))
+    const carSeatReviews = reviews?.filter((review) => review.carseat_id === parseInt(carseat_id, 10))
 
     const carSeatReviewCards = carSeatReviews?.map(review => <ReviewCard key={review.id} review={review} handleDeleteReview={handleDeleteReview}/>);
 

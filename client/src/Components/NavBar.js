@@ -2,22 +2,23 @@ import { Link,} from "react-router-dom";
 
 import { useContext } from "react"
 import { UsersContext } from "./Context/UsersContext"
-import Login from "./Login";
-import CarSeatCard from "./CarSeatCard";
-import CarSeatList from "./CarSeatList";
+// import Login from "./Login";
+// import CarSeatCard from "./CarSeatCard";
+// import CarSeatList from "./CarSeatList";
 
 function NavBar() {
 
-    const {setCurrentUser, currentUser} = useContext(UsersContext)
+    const {loggedIn, logoutUser} = useContext(UsersContext)
 
     const handleLogoutClick = () => {
         fetch("/logout", {method: "DELETE"})
-        .then((r) => setCurrentUser(null))
+        .then((r) => logoutUser())
     }
 
     const loggedInLinks = () => {
         return(
           <>
+            <li><Link to="/carseats">Books</Link></li>
             <li><Link to="/carseats/new">Add Car Seat</Link></li>
             <li><Link to="mycarseats">My Car Seats</Link></li> 
             <li><Link to="/reviews">Reviews</Link></li>
@@ -29,7 +30,10 @@ function NavBar() {
     
       const loggedOutLinks = () => {
         return(
-          <Login />
+            <>
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/signup">Signup</Link></li>
+            </>
         )
       }
     
@@ -39,7 +43,7 @@ function NavBar() {
         <div>
             <h1>Find the Best Car Seat For You!</h1>
             <ul>
-          { currentUser ? loggedInLinks() : loggedOutLinks() }
+          { loggedIn ? loggedInLinks() : loggedOutLinks() }
         </ul>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { ErrorsContext } from "./ErrorsContext";
 
 const UsersContext = createContext({});
@@ -20,6 +20,18 @@ const UsersProvider = ({ children }) => {
         }
       })
     }, [setLoading])
+
+
+    useEffect(() => {
+        fetch("/users")
+        .then(response => response.json())
+        .then(data => {
+          if(!data.errors) {
+            setUsers(data)
+          }
+          setLoading(false)
+        })
+      }, [loggedIn, setLoading])
 
 
 
@@ -98,7 +110,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ addUser, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ users, loginUser, logoutUser, loggedIn, addUser, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }
