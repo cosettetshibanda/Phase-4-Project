@@ -22,7 +22,7 @@ import { useContext } from 'react';
 
 
 function App() {
-const {currentUser} = useContext(UsersContext)
+const {loggedIn} = useContext(UsersContext)
 
 
   return (
@@ -33,20 +33,20 @@ const {currentUser} = useContext(UsersContext)
             <CarSeatProvider >
               <NavBar />
               <Errors />
-                {!currentUser ? <Routes>
-                  <Route path="/login" element={<Login/>} />
-                <Route exact path="/" element={<Home />} />
-                <Route path="/signup" element={<SignUpForm />} /> </Routes> : <Routes>
-                <Route path="/carseats" element={<CarSeatList/>} />
+                {loggedIn ? "hello" : <Routes>
+                <Route path="/signup" element={<SignUpForm />} /> 
                 <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
+                <Route path="/login" element={<Login/>} />
+                <Route path="/carseats" element={<CarSeatList/>} />
+                <Route exact path="/" element={<Home />} />
                 <Route path="/carseats/new" element={<CarSeatForm />} />
                 <Route path="/mycarseats" element={<UserCarSeats />} />
                 <Route path="/reviews" element={<ReviewsList />} />
                 <Route path="/reviews/:id/edit" element={<ReviewEdit />}/>
                 <Route path="/books/:id/new-review" element={<ReviewForm />} />
                 <Route path="/users/:user_id/reviews" element={<UserReviews />} />
-                {/* <Route path="/login" element={<Login/>} />
-                <Route path="/signup" element={<SignUpForm />} /> */}
+                <Route path="/login" element={<Login/>} />
+                <Route path="/signup" element={<SignUpForm />} />
               </Routes>}
             </CarSeatProvider>
           </ReviewsProvider>

@@ -18,7 +18,7 @@ const CarSeatProvider = ({children}) => {
         }
     }
 
-    console.log(carSeats)
+
 
     useEffect(loadCarSeats, [loggedIn, navigate])
 

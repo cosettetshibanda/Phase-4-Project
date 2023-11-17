@@ -12,7 +12,7 @@ function CarSeatList() {
     const { loggedIn} = useContext(UsersContext)
     const {setErrors} = useContext(ErrorsContext)
 
-
+console.log(carSeats)
     useEffect(() => {
         if(!loggedIn){
             navigate("/login")
