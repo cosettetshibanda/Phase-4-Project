@@ -13,6 +13,7 @@ import Home from './Components/Home';
 import CarSeatReviews from './Components/CarSeatReviews';
 import { ErrorsProvider } from './Components/Context/ErrorsContext';
 import UserCarSeats from './Components/UserCarSeats';
+import ReviewsList from './Components/ReviewsList';
 
 
 
@@ -34,7 +35,7 @@ function App() {
                 <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
                 <Route path="/carseats/new" element={<CarSeatForm />} />
                 <Route path="/mycarseats" element={<UserCarSeats />} />
-                <Route path="/reviews" element={}
+                <Route path="/reviews" element={<ReviewsList />} />
                 <Route path="/login" element={<Login/>} />
               </Routes>}
             </CarSeatProvider>
