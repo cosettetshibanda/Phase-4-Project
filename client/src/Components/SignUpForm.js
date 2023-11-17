@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UsersContext } from "./Context/UsersContext";
 import { useNavigate } from "react-router-dom";
 import { ErrorsContext } from "./Context/ErrorsContext";
@@ -6,7 +6,7 @@ import { ErrorsContext } from "./Context/ErrorsContext";
 function SignUpForm() {
     const navigate = useNavigate()
     const {setErrors} = useContext(ErrorsContext)
-    const {loggedIn, loginUser, addUser} = useContext(UsersContext)
+    const { loginUser } = useContext(UsersContext)
 
     // useEffect(() => {
     //     if(!loggedIn) {

@@ -5,7 +5,6 @@ import React, { useState, useEffect, createContext } from "react";
 const UsersContext = createContext({});
 
 const UsersProvider = ({ children }) => {
-    const [users, setUsers] = useState([])
     const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(false)
     // const {setLoading} = useContext(ErrorsContext)
@@ -109,7 +108,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ users, loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

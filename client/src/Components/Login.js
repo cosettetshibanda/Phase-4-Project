@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import { useNavigate } from "react-router-dom"
 import { UsersContext } from "./Context/UsersContext";
 // import SignUpForm from "./SignUpForm";
@@ -8,9 +8,9 @@ import { ErrorsContext } from "./Context/ErrorsContext";
 
 
 
-function Login({loading}){
+function Login(){
     const navigate = useNavigate()
-    const {loggedIn, loginUser} = useContext(UsersContext)
+    const {loginUser} = useContext(UsersContext)
     const {setErrors} = useContext(ErrorsContext)
     // const [showLoginForm, setShowLoginForm] = useState(false)
     // const [showSignupForm, setShowSignupForm] = useState(false)
