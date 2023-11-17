@@ -1,36 +1,41 @@
 class ReviewsController < ApplicationController
+    before_action :find_review, only: [:show, :update, :destroy]
+    before_action only: [:update, :destroy] do 
+        authorize_user_resource(@review.user_id)
 
     def index
-        reviews = Review.all 
-        render json: reviews, status: ;ok
+        if paramss[:user_id]
+            user = User.find_by_id(params[:user_id])
+            @reviews = user.reviews
+        else
+            @reviews = Review.all 
+        end
+            render json: @reviews, status: ;ok
     end
 
     def show
-        review = review_find
-        render json: review, status: :ok
+        render json: @review, status: :ok
     end
 
     def update
-        review = review_find
-        review.update!(review_params)
-        render json: review, status: :ok
+        @review.update!(review_params)
+        render json: @review, status: :ok
     end
 
     def create
-        review = Review.create!(review_params)
+        review = current_user.reviews.create!(review_params)
         render json: review, status: :created
     end
 
     def destroy
-        review = review_find
-        review.destroy
+        @review.destroy
         head :no_content
     end
 
     private
 
     def review_find
-        Review.find(params[:id])
+      @review = Review.find(params[:id])
     end
 
     def review_params
