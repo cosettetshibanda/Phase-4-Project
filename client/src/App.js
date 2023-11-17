@@ -15,6 +15,9 @@ import { ErrorsProvider } from './Components/Context/ErrorsContext';
 import UserCarSeats from './Components/UserCarSeats';
 import ReviewsList from './Components/ReviewsList';
 import ReviewEdit from './Components/ReviewEdit';
+import ReviewForm from './Components/ReviewForm';
+import UserReviews from './Components/UserReviews';
+import SignUpForm from './Components/SignUpForm';
 
 
 
@@ -38,8 +41,10 @@ function App() {
                 <Route path="/mycarseats" element={<UserCarSeats />} />
                 <Route path="/reviews" element={<ReviewsList />} />
                 <Route path="/reviews/:id/edit" element={<ReviewEdit />}/>
-                <Route path="/books/:id/new-review" element={<ReviewForm  />} />
+                <Route path="/books/:id/new-review" element={<ReviewForm />} />
+                <Route path="/users/:user_id/reviews" element={<UserReviews />} />
                 <Route path="/login" element={<Login/>} />
+                <Route path="/signup" element={<SignUpForm />} />
               </Routes>}
             </CarSeatProvider>
           </ReviewsProvider>

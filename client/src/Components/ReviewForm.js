@@ -10,7 +10,7 @@ const ReviewForm = ({ loading }) => {
     
     const navigate = useNavigate();
     const {addReview} = useContext(ReviewsContext);
-    const {carSeats} = useContext(CarSeatContextContext);
+    const {carSeats} = useContext(CarSeatContext);
     const {loggedIn, updateUserAddedReviews} = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {id} = useParams();
@@ -26,10 +26,10 @@ const ReviewForm = ({ loading }) => {
         if(!loading && !loggedIn) {
             navigate("/")
         }
-        if(carseats.length > 0) {
-            setCarSeats(carSeats.find(carSeat => carSeat.id === parseInt(id, 10)));
+        if(carSeats.length > 0) {
+            setCarSeat(carSeats.find(carSeat => carSeat.id === parseInt(id, 10)));
             setFormData({
-                carseat_id: carseat.id,
+                carseat_id: carSeat.id,
                 stars: "",
                 summary: "",
             })
@@ -65,7 +65,7 @@ const ReviewForm = ({ loading }) => {
 
     return (
         <>
-            <h3>Add a Review for {book.title}</h3>
+            <h3>Add a Review for {carSeat.name}</h3>
             <form onSubmit={handleSubmit}>
                 <label>Stars (1-5)</label>
                 <input
