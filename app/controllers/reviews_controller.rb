@@ -1,7 +1,4 @@
 class ReviewsController < ApplicationController
-    before_action :find_review, only: [:show, :update, :destroy]
-    before_action only: [:update, :destroy] do 
-        authorize_user_resource(@review.user_id)
 
     def index
         if paramss[:user_id]
@@ -10,7 +7,7 @@ class ReviewsController < ApplicationController
         else
             @reviews = Review.all 
         end
-            render json: @reviews, status: ;ok
+            render json: @reviews, status: :ok
     end
 
     def show
