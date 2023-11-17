@@ -97,7 +97,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ carSeats, setCarSeats, errors, setErrors, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ addUser, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

@@ -11,6 +11,7 @@ import { CarSeatProvider } from './Components/Context/CarSeatContext';
 import Errors from './Components/Errors';
 import Home from './Components/Home';
 import CarSeatReviews from './Components/CarSeatReviews';
+import { ErrorsProvider } from './Components/Context/ErrorsContext';
 
 
 
