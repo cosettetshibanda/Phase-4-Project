@@ -8,12 +8,13 @@ const ReviewEdit = () => {
 
     const navigate = useNavigate();
     const {reviews, editReview} = useContext(ReviewsContext);
-    const {loggedIn, currentUser, updateUserReviews} = useContext(UsersContext);
+    const {loggedIn, currentUser} = useContext(UsersContext);
     const {id} = useParams();
 
     const [formData, setFormData] = useState({
         carseat_name: "",
         carseat_id: "",
+        user_id: "",
         stars: "",
         summary: ""
     });
@@ -31,6 +32,7 @@ const ReviewEdit = () => {
             setFormData({
                 carseat_name: review.carseat.name,
                 carseat_id: review.carseat_id,
+                user_id: currentUser.id,
                 stars: review.stars,
                 summary: review.summary
             })
@@ -54,7 +56,6 @@ const ReviewEdit = () => {
             .then(response => response.json())
             .then(data => {
                 editReview(data)
-                updateUserReviews(data)
                 navigate(-1)
             })
 

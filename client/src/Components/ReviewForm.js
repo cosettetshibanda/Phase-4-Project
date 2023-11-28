@@ -7,21 +7,23 @@ import { ErrorsContext } from "./Context/ErrorsContext";
 
 
 const ReviewForm = () => {
+
     
     const navigate = useNavigate();
     const {addReview} = useContext(ReviewsContext);
     const {carSeats} = useContext(CarSeatContext);
-    const {loggedIn, updateUserAddedReviews} = useContext(UsersContext);
+    const {loggedIn, currentUser } = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {id} = useParams();
-
+    
     const [carSeat, setCarSeat] = useState("");
     const [formData, setFormData] = useState({
         carseat_id: "",
+        user_id: "",
         stars: "",
         summary: "",
     });
-
+    
     useEffect(() => {
         if(!loggedIn) {
             navigate("/")
@@ -30,6 +32,7 @@ const ReviewForm = () => {
             setCarSeat(carSeats.find(carSeat => carSeat.id === parseInt(id, 10)));
             setFormData({
                 carseat_id: carSeat.id,
+                user_id: currentUser.id, 
                 stars: "",
                 summary: "",
             })
@@ -56,7 +59,6 @@ const ReviewForm = () => {
                 setErrors(data.errors)
             } else {
                 addReview(data)
-                updateUserAddedReviews(data)
                 navigate(-1)
                 setErrors([]);
             }

@@ -23,8 +23,8 @@ const ReviewCard = ({ review }) => {
     return (
       <div>
         <figure>
-          <h1>{review.carseat?.title}</h1>
-          <img src={review.carseat?.img} alt="book_cover" width={100} height={150} />
+          <h1>{review.carseat?.name}</h1>
+          <img src={review.carseat?.img} alt={review.carseat.img} width={100} height={150} />
           <h2>{review.stars}/5 Stars</h2>
           <p>{review.summary} -{review.user?.username}</p>
           {currentUser && currentUser.id === review.user?.id ? <>

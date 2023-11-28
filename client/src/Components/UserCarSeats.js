@@ -21,7 +21,7 @@ const UserCarSeats = () => {
     }, [loggedIn, navigate, setErrors])
 
     const myReviews = reviews.filter((review) => review.user_id === parseInt(currentUser.id, 10))
-    const myCarSeatList = myReviews?.map(review => <li key={review.carseat.id}><Link to={`/books/${review.book.id}`}>{review.book.title}</Link></li>)
+    const myCarSeatList = myReviews?.map(review => <li key={review.carseat.id}><Link to={`/carseats/${review.carseat.id}`}>{review.carseat.name}</Link></li>)
 
     return (
         <>
