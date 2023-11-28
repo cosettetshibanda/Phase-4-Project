@@ -57,7 +57,7 @@ function CarSeatForm ({loading}) {
                 setErrors(data.errors)
             } else {
                 addCarSeat(data)
-                navigate("/books")
+                navigate("/carseats")
             }
         })
         setFormData({

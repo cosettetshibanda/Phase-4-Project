@@ -15,8 +15,8 @@ function CarSeatCard ({carSeat}) {
             <p>mode: {carSeat.mode}</p>
             <p>Features: {carSeat.features} </p>
             <p>Approximate Price: ${carSeat.price}</p>
-            <button onClick={() => navigate(`/carseat/${carSeat.id}/new-review`)}>Add Review</button>
-            <button onClick={() => navigate(`/carseat/${carSeat.id}`)}>All Reviews</button>
+            <button onClick={() => navigate(`/carseats/${carSeat.id}/new-review`)}>Add Review</button>
+            <button onClick={() => navigate(`/carseats/${carSeat.id}`)}>All Reviews</button>
         </div>
     )
 
