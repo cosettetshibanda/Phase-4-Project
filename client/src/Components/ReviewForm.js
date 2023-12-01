@@ -37,7 +37,7 @@ const ReviewForm = () => {
                 summary: "",
             })
         }
-    }, [ loggedIn, navigate, id, setErrors, carSeats, carSeat ]);
+    }, [ currentUser.id, loggedIn, navigate, id, setErrors, carSeats, carSeat ]);
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})

@@ -22,7 +22,7 @@ import { useContext } from 'react';
 
 
 function App() {
-const {loggedIn} = useContext(UsersContext)
+// const {loggedIn} = useContext(UsersContext)
 
 
   return (
@@ -33,7 +33,7 @@ const {loggedIn} = useContext(UsersContext)
             <CarSeatProvider >
               <NavBar />
               <Errors />
-                {loggedIn ? "hello" : <Routes>
+              <Routes>
                 <Route path="/signup" element={<SignUpForm />} /> 
                 <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
                 <Route path="/login" element={<Login/>} />
@@ -47,7 +47,7 @@ const {loggedIn} = useContext(UsersContext)
                 <Route path="/users/:user_id/reviews" element={<UserReviews />} />
                 <Route path="/login" element={<Login/>} />
                 <Route path="/signup" element={<SignUpForm />} />
-              </Routes>}
+              </Routes>
             </CarSeatProvider>
           </ReviewsProvider>
         </UsersProvider>

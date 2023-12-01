@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { ReviewsContext } from "./Context/ReviewsContext";
 import { UsersContext } from "./Context/UsersContext";
 import ReviewCard from "./ReviewCard";
+import { CarSeatContext } from "./Context/CarSeatContext";
 
 
 function ReviewsList () {
     const navigate = useNavigate()
+    const {carSeats} = useContext(CarSeatContext)
     const {reviews, handleDeleteReview} = useContext(ReviewsContext)
-    const {loggedIn, currentUser} = useContext(UsersContext)
+    const {loggedIn} = useContext(UsersContext)
 
 
     useEffect(() => {
@@ -17,7 +19,7 @@ function ReviewsList () {
         }
     }, [loggedIn, navigate])
 
-    const reviewCards = reviews?.map((review, idx) => <ReviewCard key={idx} review={review} handleDeleteReview={handleDeleteReview} currentUser={currentUser} />)
+    const reviewCards = carSeats.map((carseat, idx) => <ReviewCard key={idx} carseat={carseat} handleDeleteReview={handleDeleteReview} />)
 
 
     return (

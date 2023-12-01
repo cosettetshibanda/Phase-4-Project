@@ -15,7 +15,7 @@ const UsersProvider = ({ children }) => {
       .then(response => response.json())
       .then(data => {
         if(!data.errors){
-            setCurrentUser(data)
+            loginUser(data)
         }
       })
     }, [])
@@ -34,12 +34,14 @@ const UsersProvider = ({ children }) => {
 
 
 
-    const loginUser = () => {
-        if(currentUser) {
-            setLoggedIn(true);
-        } else {
-            setLoggedIn(false)
-        }
+    const loginUser = (user) => {
+      setCurrentUser(user)
+      setLoggedIn(true)
+        // if(currentUser) {
+        //     setLoggedIn(true);
+        // } else {
+        //     setLoggedIn(false)
+        // }
       };
        
       const logoutUser = () => {
