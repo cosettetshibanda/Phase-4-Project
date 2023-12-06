@@ -7,14 +7,16 @@ function CarSeatCard ({carSeat}) {
     const rating = carSeat.reviews.map(review => review.stars).reduce((a, b) => a + b, 0)/carSeat.reviews.length
 
     return(
-        <div>
-            <h1>{carSeat.name}</h1>
-            <h2>Average Rating: {rating ? rating : "No Reviews Yet"} </h2>
-            <img src={carSeat.img} alt="carSeat.id" />
-            <p>Expires in {carSeat.expiration} years.</p>
-            <p>mode: {carSeat.mode}</p>
-            <p>Features: {carSeat.features} </p>
-            <p>Approximate Price: ${carSeat.price}</p>
+        <div className="carSeatCard">
+            <h2 className="carSeatName">{carSeat.name}</h2>
+            <h3 className="rating">Average Rating: {rating ? rating : "No Reviews Yet"} </h3>
+            <img className="image" src={carSeat.img} alt="carSeat.id" />
+            <div className="description" >
+                <p>Expires in {carSeat.expiration} years.</p>
+                <p>mode: {carSeat.mode}</p>
+                <p>Features: {carSeat.features} </p>
+                <p>Approximate Price: ${carSeat.price}</p>
+            </div>
             <button onClick={() => navigate(`/carseats/${carSeat.id}/new-review`)}>Add Review</button>
             <button onClick={() => navigate(`/carseats/${carSeat.id}`)}>All Reviews</button>
         </div>

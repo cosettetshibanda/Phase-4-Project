@@ -24,8 +24,15 @@
   color: white;
 }
 
+
+
+
 .App-link {
   color: #61dafb;
+}
+
+body {
+  background-color: rgb(46, 199, 62);
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +42,38 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+div.carSeatList {
+  display: grid;
+  column-gap: 10px;
+
+}
+
+img.image {
+  max-width: 100px;
+}
+
+div.carSeatList {
+  max-width: 550px;
+  max-height: 300px;
+  border: 0;
+  width: 100%;
+  margin-inline: auto;
+}
+
+h2.carSeatName {
+  color: red;
+  font-family: fantasy;
+}
+
+div.description {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2.title {
+  text-align: center;
+  color: rgb(0, 8, 1);
+  font-family: Arial, Helvetica, sans-serif;
 }

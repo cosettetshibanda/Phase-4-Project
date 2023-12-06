@@ -60,8 +60,8 @@ console.log(carSeats)
 
     return (
         <>
-            <h3>Here are all the Car Seats!</h3>
-            <div>{carSeatCards}</div>
+            <h2 className="title">Here are all the Car Seats!</h2>
+            <div className="carSeatList">{carSeatCards}</div>
         </>
     )
 

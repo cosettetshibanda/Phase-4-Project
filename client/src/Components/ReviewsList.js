@@ -19,7 +19,7 @@ function ReviewsList () {
         }
     }, [loggedIn, navigate])
 
-    const reviewCards = carSeats.map((carseat, idx) => <ReviewCard key={idx} carseat={carseat} handleDeleteReview={handleDeleteReview} />)
+    const reviewCards = reviews.map((review, idx) => <ReviewCard key={idx} review={review} handleDeleteReview={handleDeleteReview} />)
 
 
     return (
