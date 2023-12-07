@@ -73,22 +73,22 @@ const UsersProvider = ({ children }) => {
     //     setUsers(updatedUsersState)
     //   }
   
-//       const updateUserDeletedReviews = (deletedReview) => {
-//         const userToUpdate = users?.find(user => user.id === deletedReview.user_id)
-//         const updatedUserReviews = userToUpdate.reviews?.filter((review) => review.id !== deletedReview.id)
-//         const updatedUser = {
-//           ...userToUpdate,
-//           reviews: updatedUserReviews
-//         }
-//         const updatedUsersState = users.map(user => {
-//           if(user.id === updatedUser.id) {
-//             return updatedUser
-//           } else {
-//             return user
-//           }
-//         })
-//         setUsers(updatedUsersState)
-//       };
+      // const updateUserDeletedReviews = (deletedReview) => {
+      //   const userToUpdate = users?.find(user => user.id === deletedReview.user_id)
+      //   const updatedUserReviews = userToUpdate.reviews?.filter((review) => review.id !== deletedReview.id)
+      //   const updatedUser = {
+      //     ...userToUpdate,
+      //     reviews: updatedUserReviews
+      //   }
+      //   const updatedUsersState = users.map(user => {
+      //     if(user.id === updatedUser.id) {
+      //       return updatedUser
+      //     } else {
+      //       return user
+      //     }
+      //   })
+      //   setUsers(updatedUsersState)
+      // };
   
 //       const updateUserAddedReviews = (addedReview) => {
 //         const userToUpdate = users?.find(user => user.id === addedReview.user_id)

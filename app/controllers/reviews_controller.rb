@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+    before_action :review_find, only: [:update, :destroy]
+
 
     def index
         if params[:user_id]
@@ -15,7 +17,7 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review.update!(review_params)
+        @review.update(review_params)
         render json: @review, status: :ok
     end
 

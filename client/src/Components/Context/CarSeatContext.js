@@ -26,8 +26,20 @@ const CarSeatProvider = ({children}) => {
         setCarSeats([...carSeats, carSeatObj])
     }
 
+
+
+    function handleDeleteReview(review) {
+        const carseat = carSeats.find((carseat) => carseat.id === review.carseat_id)
+        const updatedReviews = carseat.reviews.filter((r) => r.id !==review.id);
+        const updatedCarseat = carSeats.map((c) => c.id === carseat.id ? {...carseat, reviews: updatedReviews} : c)
+      
+        setCarSeats(updatedCarseat)
+    }
+
+
+
     return(
-        <CarSeatContext.Provider value={{carSeats, setCarSeats, addCarSeat}}>{children}</CarSeatContext.Provider>
+        <CarSeatContext.Provider value={{handleDeleteReview, carSeats, setCarSeats, addCarSeat}}>{children}</CarSeatContext.Provider>
     )
 }
 
