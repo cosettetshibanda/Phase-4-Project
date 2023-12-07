@@ -10,6 +10,7 @@ const ReviewCard = ({ review }) => {
     const navigate = useNavigate();
     const {currentUser, updateUserDeletedReviews} = useContext(UsersContext);
     const {handleDeleteReview} = useContext(CarSeatContext);
+    const {handleDeletedReview} = useContext(ReviewsContext)
   
 
 
@@ -34,6 +35,7 @@ const ReviewCard = ({ review }) => {
           // Handle the JSON data
         }
         handleDeleteReview(review);
+        handleDeletedReview(review)
       })
       .catch(error => {
         console.error('Error:', error);

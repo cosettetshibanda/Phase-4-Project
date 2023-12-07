@@ -20,7 +20,7 @@ const ReviewsProvider = ({ children }) => {
         setReviews([...reviews, reviewObj])
     };
 
-    const handleDeleteReview = (deletedReview) => {
+    const handleDeletedReview = (deletedReview) => {
         const updatedReviews = reviews.filter((review) => review.id !== deletedReview.id);
         setReviews(updatedReviews)
     };
@@ -39,7 +39,7 @@ const ReviewsProvider = ({ children }) => {
 
 
     return(
-        <ReviewsContext.Provider value={{ reviews, setReviews, addReview, handleDeleteReview, editReview }}>{ children }</ReviewsContext.Provider>
+        <ReviewsContext.Provider value={{ reviews, setReviews, addReview, handleDeletedReview, editReview }}>{ children }</ReviewsContext.Provider>
     )
 };
 

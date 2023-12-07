@@ -34,11 +34,11 @@ function App() {
               <NavBar />
               <Errors />
               <Routes>
+                <Route exact path="/" element={<Home />} />
                 <Route path="/signup" element={<SignUpForm />} /> 
                 <Route path="/carseats/:carseat_id" element={<CarSeatReviews />} />
                 <Route path="/login" element={<Login/>} />
                 <Route path="/carseats" element={<CarSeatList/>} />
-                <Route exact path="/" element={<Home />} />
                 <Route path="/carseats/new" element={<CarSeatForm />} />
                 <Route path="/mycarseats" element={<UserCarSeats />} />
                 <Route path="/reviews" element={<ReviewsList />} />
