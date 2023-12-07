@@ -1,39 +1,28 @@
 # Frontend Animal Categories
 
 ## Project Philosophy
-I started this project because my two year old daughter is super into animals right now. I hear about them all day and all night. So I set out with this thought in mind. This website is designed to create a data set to organize different animals into categories. It allows you to view these animals in an organized format.
+As a parent there are a million different options for everything. So many decisions are having to be made on a daily basis. The point of this project is to make one of those big descisions a bit easier. 
+
+There are a lot of different car seat out there for your child and you want to make sure you pick the best one for you. You want one that is safe for your child, fits well in car, and works with your lifestyle. Some people may want a skinnier car seat to fit best in their car. Others, might want one that comes with a stroller for easy transportation. 
+
+The best way to figure out which car seat is best for you is to hear from the parents who have actually used the car seat. If you get all your information from the car seat company it can be overwhelming and not very helpful. So hearing the specifics from others in your situation can be the best resource. 
 
 ## Details
 
-```txt
-├── public
-└── src
-     ├── Components
-        ├── App.js
-            ├── Navbar.js
-            ├── CategoryList.js
-                ├── Category.js
-            ├── CategoriesForm.js
-            ├── CategoryCard.js
-                ├── Animal.js
-                ├── AnimalForm.js
-└── App.css
-├── db.json
-├── README.md
-```
-
-This project is set up with react and is sent nested data from a sinatra backend program. It has multiple navlinks to different pages. Allow full CRUD capabilities. 
-It has Get, Post, Patch, and Delete requests on the Animal data and Get and Post on the Category data. This code uses a lot of mapping and filtering to access the nested data and allow you to change the deeper aspects of the data.
+This project is set up with react frontend and is sent nested data from a ruby on rails backend program. It has multiple navlinks to different pages. Allow create and read capabilities to all components. As well as full CRUD capabilities to the join table. All the nested data is connected together in a many to many relationship. There are users with many reviews to many car seats. 
+It has Get, Post, Patch, and Delete requests on the review data and Get and Post on the User and Car Seat data. This code uses a lot of mapping and filtering to access the nested data and allow you to change the deeper aspects of the data.
 
 
 ## Features
-This webiste allows you to create and view a list of categories. These categories describe different groups of animals that range from safari animals to sea creatures. It also shows you the animals that can fit into each category. You have the capabilities of adding new animals to specific category, deleting an animal from a category, and editing the image of an animal.
+This webiste allows you to create and view a list of car seats. With each car seat is a button that allows you to see the reviews and add your own. With your reviews you are able to edit or delete them but you are unable to edit and delete someone elses. 
+
+At the top of the page are links that allow you to see all the reviews that people have added, the car seats that you have put reviews on, the ability to add a new car seat to the list, and logout of your account. 
 
 ## How to Use
 To view the different animals in each category you must click on the "see animals" link underneath the image of the category. This will take you to the new page with a list of all the animals. You can delete any of the animals by clicking on the little garbage can emoji. If you input a image address into the form below and submit it the picture of the animal will update. Another thing that it allows at the bottom of the page is an option to create a new animal in that category. You do this by filling out the form and submitting it. There is also an option to add a new category and that is done by submitting the form under the link at the top of the page called "new category."
 
 ## Installation Instructions
-To get this app up and running you need to by forking and then cloning this on github and running npm start. This will bring up the website. To get the website to work you must also get the back end up and running. You can find the back end at this link https://github.com/cosettetshibanda/phase-3-project. You will need to fork and clone this one as well. Once that is up you need to run rake server to get the backend up and running.
+To get this app up and running you need to by forking and then cloning this on github and running npm install --prefix client and npm start --prefix client. This will bring up the website. To get the website to work you must also get the back end up and running. To do this you put in the terminal rails db:migrate and rails s. 
 
 ## Contributions
 If you would like to make contributions to this website contact the creator at cosettetshibanda@gmail.com
