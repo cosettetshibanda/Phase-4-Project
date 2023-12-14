@@ -15,7 +15,7 @@ function CarSeatList() {
 
     useEffect(() => {
         if(!loggedIn){
-            navigate("/login")
+            navigate("/")
         }
         return() => {
             setErrors([])

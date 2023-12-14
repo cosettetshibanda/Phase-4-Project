@@ -11,7 +11,7 @@ const CarSeatReviews = () => {
     const {carseat_id} = useParams();
     const {loggedIn} = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
-    const {carSeats} = useContext(CarSeatContext)
+    const {carSeats,} = useContext(CarSeatContext)
     const [carseat, setCarseat] = useState({ reviews: [] })
 
     const carSeat = carSeats.find((carseat) => carseat.id === parseInt(carseat_id))

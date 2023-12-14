@@ -12,29 +12,6 @@ function Login(){
     const navigate = useNavigate()
     const {loginUser} = useContext(UsersContext)
     const {setErrors} = useContext(ErrorsContext)
-    // const [showLoginForm, setShowLoginForm] = useState(false)
-    // const [showSignupForm, setShowSignupForm] = useState(false)
-    // const [showSignupButton, setShowSignupButton] = useState(true)
-    // const [showLoginButton, setShowLoginButton] = useState(true)
-
-//    const handleLoginClick = () => {
-//     setShowLoginForm((showLoginForm) => !showLoginForm)
-//     setShowLoginButton((showLoginButton) => !showLoginButton)
-//    }
-
-//    const handleSignupClick = () => {
-//     setShowSignupForm((showSignupForm) => !showSignupForm)
-//     setShowSignupButton((showButton) => !showButton)
-//    }
-
-    // useEffect(() => {
-    //     if(!loggedIn) {
-    //         navigate("/")
-    //     }
-    //     return () => {
-    //         setErrors([])
-    //     }
-    // }, [loading, loggedIn, navigate, setErrors])
 
     const [formData, setFormData] = useState({
         username: "",
