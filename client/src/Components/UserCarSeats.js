@@ -40,16 +40,41 @@ const UserCarSeats = () => {
                         
                         const myReviews = currentUser?.reviews?.filter((review) => review.user_id === parseInt(currentUser?.id, 10));
 
+                        // Create a Set to store unique car seat names globally
+                        const uniqueCarSeatNames = new Set();
+                        
                         const myCarSeatList = myReviews?.map((review) => {
-                            const findCarSeatName = carSeats.find((carseat) => carseat.id === review.carseat_id);
-                            const carSeatName = findCarSeatName?.name || "No Car Seat Found";
-                          
+                          const findCarSeatName = carSeats.find((carseat) => carseat.id === review.carseat_id);
+                          const carSeatName = findCarSeatName?.name || "No Car Seat Found";
+                        
+                          // Check if the car seat name is already in the global unique names Set
+                          if (!uniqueCarSeatNames.has(carSeatName)) {
+                            uniqueCarSeatNames.add(carSeatName);
+                        
                             return (
                               <li key={review.id}>
                                 <Link to={`/carseats/${review.carseat_id}`}>{carSeatName}</Link>
                               </li>
                             );
-                          });
+                          }
+                        
+                          // If the car seat name is already in the global Set, return null to skip rendering
+                          return null;
+                        });
+
+                        
+                        // const myReviews = currentUser?.reviews?.filter((review) => review.user_id === parseInt(currentUser?.id, 10));
+
+                        // const myCarSeatList = myReviews?.map((review) => {
+                        //     const findCarSeatName = carSeats.find((carseat) => carseat.id === review.carseat_id);
+                        //     const carSeatName = findCarSeatName?.name || "No Car Seat Found";
+                          
+                        //     return (
+                        //       <li key={review.id}>
+                        //         <Link to={`/carseats/${review.carseat_id}`}>{carSeatName}</Link>
+                        //       </li>
+                        //     );
+                        //   });
     //                     const findCarSeatName = carSeats.find((carseat) => carseat.id === myReviews.carseat_id);
                     
     //                     const carSeatName = findCarSeatName?.name || "No Car Seat Found";
