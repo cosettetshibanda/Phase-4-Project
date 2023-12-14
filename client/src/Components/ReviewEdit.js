@@ -1,18 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { ReviewsContext } from "./Context/ReviewsContext";
+import { useContext, useState } from "react";
 import { UsersContext } from "./Context/UsersContext";
-import { CarSeatContext } from "./Context/CarSeatContext";
+
 
 
 function ReviewEditForm ({review, handleEditReview, toggleEditForm}) {
-
-    const navigate = useNavigate();
-    // const {reviews, editReview} = useContext(ReviewsContext);
-    const {loggedIn, currentUser, updateUserRev} = useContext(UsersContext);
-    // const {id} = useParams();
-    const {carSeats} = useContext(CarSeatContext)
-
+    const {updateUserRev} = useContext(UsersContext);
     const {id} = review
     const [editFormData, setEditFormData] = useState(review)
 
@@ -21,43 +13,7 @@ function ReviewEditForm ({review, handleEditReview, toggleEditForm}) {
         setEditFormData({ ...editFormData, [name]: value });
       };
     
-    // const location = useLocation()
-    // const passedData = location.state
-    // console.log(passedData.review)
-    // // const review = passedData.review
-
-    // const [formData, setFormData] = useState({
-    //     carseat_name: "",
-    //     carseat_id: "",
-    //     user_id: "",
-    //     stars: "",
-    //     summary: ""
-    // });
-
-    // useEffect(() => {
-    //     if(!loggedIn) {
-    //         navigate("/")
-    //     }
-
-
-    //     if(reviews.length > 0) {
-    //         const review = reviews.find(review => review.id === parseInt(id, 10));
-    //         if(currentUser.id !== review.user_id) {
-    //             navigate("/")
-    //         }
-    //         setFormData({
-    //             carseat_name: review.carseat.name,
-    //             carseat_id: review.carseat_id,
-    //             user_id: currentUser.id,
-    //             stars: review.stars,
-    //             summary: review.summary
-    //         })
-    //     }
-    // }, [carseat, loggedIn, currentUser, navigate, id]);
-
-    // const handleChange = (event) => {
-    //     setFormData({...formData, [event.target.name]: event.target.value})
-    // }
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();

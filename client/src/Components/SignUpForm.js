@@ -8,15 +8,6 @@ function SignUpForm() {
     const {setErrors} = useContext(ErrorsContext)
     const { loginUser } = useContext(UsersContext)
 
-    // useEffect(() => {
-    //     if(!loggedIn) {
-    //         navigate("/")
-    //     }
-    //     return () => {
-    //         setErrors([])
-    //     }
-    // }, [loggedIn, navigate, setErrors])
-
 
     const [formData, setFormData] = useState({
         username: "",

@@ -23,38 +23,6 @@ function CarSeatList() {
     }, [loggedIn, navigate, setErrors])
 
 
-//     useEffect(() => {
-//             fetch("/carseats") 
-//             .then(r => r.json())
-//             .then(data => setCarSeats(data))
-// }, [])
-
-
-// const loadCarSeats = () => {
-//     if(currentUser) {
-//        fetch('/carseats')
-//         .then(resp =>{
-//           if(resp.ok){
-//             resp.json().then(setCarSeats)
-//           }else{
-//             resp.json().then(errors => setErrors(errors.error))
-//           }
-//         })
-//     }
-//   }
-
-//   useEffect(loadCarSeats, [currentUser, navigate])
-
-//   console.log(carSeats)
-
-// useEffect(() => {
-//     if(!loggedIn) {
-//       navigate("/login")
-//     }
-//     return () => {
-//       setErrors([])
-//     }
-//   }, [ loggedIn, navigate, setErrors]);
 
     const carSeatCards = carSeats.map(carSeat => <CarSeatCard key={carSeat.id} carSeat={carSeat}/>)
 

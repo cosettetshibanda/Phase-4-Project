@@ -88,29 +88,6 @@ function Login(){
         />
         <input type="submit" value="Login" />
       </form>
-        // <div>
-        //     <p className="acountQuestion">
-        //      Already have an account?
-        //     </p>
-        //     {showLoginButton ? <button 
-        //          type="button"
-        //          onClick={handleLoginClick}>
-        //              Log In
-        //     </button> :null}
-        //     {showLoginForm ? <LoginForm /> : null}
-             
-        //     <p className="accountQuestion">
-        //         Don't have an account? 
-        //     </p>
-        //     {showSignupButton ? <button 
-        //         type="button"
-        //         onClick={handleSignupClick} >
-        //             Sign Up
-        //     </button> : null}
-        //     {showSignupForm ? <SignUpForm /> : null}
-
-            
-        // </div>
     )
       
 }

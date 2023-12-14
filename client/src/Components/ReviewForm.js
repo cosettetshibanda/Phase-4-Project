@@ -1,16 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ReviewsContext } from "./Context/ReviewsContext";
 import { CarSeatContext } from "./Context/CarSeatContext";
 import { UsersContext } from "./Context/UsersContext";
 import { ErrorsContext } from "./Context/ErrorsContext";
 
 
-const ReviewForm = () => {
-
-    
+const ReviewForm = () => {  
     const navigate = useNavigate();
-    // const {addReview} = useContext(ReviewsContext);
     const {carSeats} = useContext(CarSeatContext);
     const {loggedIn, currentUser, addCarSeatRev, addCarSeat } = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);

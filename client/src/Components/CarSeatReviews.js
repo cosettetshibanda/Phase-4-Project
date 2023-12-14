@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UsersContext } from "./Context/UsersContext";
 import { ErrorsContext } from "./Context/ErrorsContext";
-import { ReviewsContext } from "./Context/ReviewsContext";
 import ReviewCard from "./ReviewCard";
 import { CarSeatContext } from "./Context/CarSeatContext";
 
@@ -10,10 +9,9 @@ import { CarSeatContext } from "./Context/CarSeatContext";
 const CarSeatReviews = () => {
     const navigate = useNavigate();
     const {carseat_id} = useParams();
-    const {loggedIn, addCarSeat, removeCarSeat} = useContext(UsersContext);
+    const {loggedIn} = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {carSeats} = useContext(CarSeatContext)
-    // const {reviews, handleDeleteReview} = useContext(ReviewsContext);
     const [carseat, setCarseat] = useState({ reviews: [] })
 
     const carSeat = carSeats.find((carseat) => carseat.id === parseInt(carseat_id))
@@ -32,25 +30,6 @@ const CarSeatReviews = () => {
         }
     }, [carseat, carseat_id, carSeat])
 
-
-    // useEffect(() => {
-    //     fetch(`/carseats/${carseat_id}`).then((resp) => {
-    //       if (resp.ok) {
-    //         resp.json().then((carseatData) => setCarseat(carseatData));
-    //       } else {
-    //         resp.json().then((resp) => setErrors(resp.error));
-    //       }
-    //     });
-    // }, [loggedIn, carseat_id]);
-
-
-    // const handleAddReview = (newReview) => {
-    //     setCarseat((prevState) => ({
-    //         ...prevState,
-    //         reviews: [newReview, ...carseat.reviews]
-    //     }))
-    //     addCarSeat(carseat)
-    // }
 
     const handleDeleteReview = async (deletedRevId) => {
         // Filter out the review with the specified ID

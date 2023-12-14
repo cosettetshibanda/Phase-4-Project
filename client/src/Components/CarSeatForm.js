@@ -21,7 +21,6 @@ function CarSeatForm ({loading}) {
     }, [loggedIn, navigate, setErrors])
 
 
-    // const { carSeats, setCarSeats} = useContext(UsersContext)
     const [formData, setFormData] = useState({
         name: "",
         mode: "",
@@ -31,10 +30,6 @@ function CarSeatForm ({loading}) {
         features: ""
     })
     
-    
-    // const addCarSeat = (carSeatObj) => {
-    //      setCarSeats([...carSeats, carSeatObj])
-    // }
     
     
     const handleChange = (event) => {
