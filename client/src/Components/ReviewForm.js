@@ -10,9 +10,9 @@ const ReviewForm = () => {
 
     
     const navigate = useNavigate();
-    const {addReview} = useContext(ReviewsContext);
+    // const {addReview} = useContext(ReviewsContext);
     const {carSeats} = useContext(CarSeatContext);
-    const {loggedIn, currentUser } = useContext(UsersContext);
+    const {loggedIn, currentUser, addCarSeatRev, addCarSeat } = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {id} = useParams();
     
@@ -39,9 +39,19 @@ const ReviewForm = () => {
         }
     }, [ currentUser.id, loggedIn, navigate, id, setErrors, carSeats, carSeat ]);
 
+    const handleAddReview = (newReview) => {
+        setCarSeat((prevState) => ({
+            ...prevState,
+            reviews: [newReview, ...carSeat.reviews]
+        }))
+        addCarSeat(carSeat)
+    }
+
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})
     };
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -58,7 +68,8 @@ const ReviewForm = () => {
             if(data.errors) {
                 setErrors(data.errors)
             } else {
-                addReview(data)
+                handleAddReview(data)
+                addCarSeatRev(data)
                 navigate(-1)
                 setErrors([]);
             }

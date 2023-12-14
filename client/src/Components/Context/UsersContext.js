@@ -49,6 +49,33 @@ const UsersProvider = ({ children }) => {
         setLoggedIn(false);
       };
       
+
+      const addCarSeat = (carseat) => {
+        setCurrentUser((prevState) => ({...prevState, carseats: [carseat, ...currentUser.carseats]}))
+      }
+
+      const addCarSeatRev = (newReview) => {
+        setCurrentUser((prevState) => ({...prevState, reviews: [...currentUser.reviews, newReview]}))
+      }
+
+      const removeCarSeat = (deletedCarSeat) => {
+        console.log('Before removal:', currentUser.carseats);
+        const editedCarSeats = currentUser.carseats.filter((carseat) => carseat.id !== deletedCarSeat.id)
+        console.log('Filtered car seats:', editedCarSeats);
+        setCurrentUser((prevState) => ({...prevState, carseats: editedCarSeats}))
+        console.log('After removal:', currentUser.carseats);
+      }
+
+      const updateUserRev = (updatedRev) => {
+        const updatedReviews = currentUser.reviews.map((review) => {
+          if(review.id === updatedRev.id) {
+            return updatedRev
+          } else {
+            return review
+          }
+        })
+        setCurrentUser(prevState => ({...prevState, reviews: updatedReviews}))
+      }
     //   const updateUserReviews = (updatedReview) => {
     //     const userToUpdate = users?.find(user => user.id === updatedReview.user_id)
     //     const updatedUserReviews = userToUpdate.reviews?.map(review => {
@@ -110,7 +137,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ addCarSeat, addCarSeatRev, removeCarSeat, updateUserRev, loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }

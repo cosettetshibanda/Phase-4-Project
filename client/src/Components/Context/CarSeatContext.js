@@ -16,11 +16,11 @@ const CarSeatProvider = ({children}) => {
             .then(r => r.json())
             .then(data => setCarSeats(data))
         }
-    }
-
-
-
+    } 
+    
     useEffect(loadCarSeats, [loggedIn, navigate])
+
+    
 
     const addCarSeat = (carSeatObj) => {
         setCarSeats([...carSeats, carSeatObj])

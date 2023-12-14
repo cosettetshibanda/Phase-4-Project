@@ -9,7 +9,8 @@ const UserCarSeats = () => {
     const navigate = useNavigate()
     const {loggedIn, currentUser} = useContext(UsersContext)
     const {setErrors} = useContext(ErrorsContext)
-    const {reviews} = useContext(ReviewsContext)
+    // const {reviews} = useContext(ReviewsContext)
+    console.log(currentUser)
 
     useEffect(() => {
         if(!loggedIn) {
@@ -20,7 +21,7 @@ const UserCarSeats = () => {
         }
     }, [loggedIn, navigate, setErrors])
 
-    const myReviews = reviews.filter((review) => review.user_id === parseInt(currentUser.id, 10))
+    const myReviews = currentUser.reviews.filter((review) => review.user_id === parseInt(currentUser.id, 10))
     const myCarSeatList = myReviews?.map(review => <li key={review.carseat.id}><Link to={`/carseats/${review.carseat.id}`}>{review.carseat.name}</Link></li>)
 
     return (
