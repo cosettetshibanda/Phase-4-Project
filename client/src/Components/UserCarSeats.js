@@ -3,14 +3,15 @@ import { Link, useNavigate } from "react-router-dom"
 import { UsersContext } from "./Context/UsersContext"
 import { ErrorsContext } from "./Context/ErrorsContext"
 import { ReviewsContext } from "./Context/ReviewsContext"
+import { CarSeatContext } from "./Context/CarSeatContext"
 
 
 const UserCarSeats = () => {
     const navigate = useNavigate()
     const {loggedIn, currentUser} = useContext(UsersContext)
     const {setErrors} = useContext(ErrorsContext)
+    const {carSeats} = useContext(CarSeatContext)
     // const {reviews} = useContext(ReviewsContext)
-    console.log(currentUser)
 
     useEffect(() => {
         if(!loggedIn) {
@@ -21,8 +22,39 @@ const UserCarSeats = () => {
         }
     }, [loggedIn, navigate, setErrors])
 
-    const myReviews = currentUser.reviews.filter((review) => review.user_id === parseInt(currentUser.id, 10))
-    const myCarSeatList = myReviews?.map(review => <li key={review.carseat.id}><Link to={`/carseats/${review.carseat.id}`}>{review.carseat.name}</Link></li>)
+    console.log(currentUser?.carseats)
+
+
+    // const findCarSeatName = carSeats.find((carseat) => {
+        //     if(currentUser?.carseat_id === carseat.id) {
+            //         return carseat.name
+            //     }
+            // })
+            // const findUsername = carseat.users.find((user) => {
+                //     if (user.id === review.user_id){
+                    //       return user.username
+                    //     } else {
+                        //       return null
+                        //     }
+                        //   })
+                        
+                        const myReviews = currentUser?.reviews?.filter((review) => review.user_id === parseInt(currentUser?.id, 10));
+
+                        const myCarSeatList = myReviews?.map((review) => {
+                            const findCarSeatName = carSeats.find((carseat) => carseat.id === review.carseat_id);
+                            const carSeatName = findCarSeatName?.name || "No Car Seat Found";
+                          
+                            return (
+                              <li key={review.id}>
+                                <Link to={`/carseats/${review.carseat_id}`}>{carSeatName}</Link>
+                              </li>
+                            );
+                          });
+    //                     const findCarSeatName = carSeats.find((carseat) => carseat.id === myReviews.carseat_id);
+                    
+    //                     const carSeatName = findCarSeatName?.name || "No Car Seat Found";
+    // // const myReviews = currentUser.reviews.filter((review) => review.user_id === parseInt(currentUser.id, 10))
+    // const myCarSeatList = myReviews?.map(review => <li key={review.id}><Link to={`/carseats/${review.carseat_id}`}>{carSeatName}</Link></li>)
 
     return (
         <>
