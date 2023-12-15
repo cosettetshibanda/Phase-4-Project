@@ -8,7 +8,7 @@ import { ErrorsContext } from "./Context/ErrorsContext";
 const ReviewForm = () => {  
     const navigate = useNavigate();
     const {carSeats} = useContext(CarSeatContext);
-    const {loggedIn, currentUser, addCarSeatRev, addCarSeat } = useContext(UsersContext);
+    const {loggedIn, currentUser, addCarSeatRev } = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
     const {id} = useParams();
     
@@ -40,7 +40,7 @@ const ReviewForm = () => {
             ...prevState,
             reviews: [newReview, ...carSeat.reviews]
         }))
-        addCarSeat(carSeat)
+        addCarSeatRev(carSeat)
     }
 
     const handleChange = (event) => {
@@ -65,7 +65,7 @@ const ReviewForm = () => {
                 setErrors(data.errors)
             } else {
                 handleAddReview(data)
-                addCarSeatRev(data)
+                // addCarSeatRev(data)
                 navigate(-1)
                 setErrors([]);
             }

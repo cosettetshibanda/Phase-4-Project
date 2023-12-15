@@ -9,44 +9,55 @@ import { CarSeatContext } from "./Context/CarSeatContext";
 const CarSeatReviews = () => {
     const navigate = useNavigate();
     const {carseat_id} = useParams();
-    const {loggedIn} = useContext(UsersContext);
+    const {loggedIn, removeCarSeatRev, currentUser} = useContext(UsersContext);
     const {setErrors} = useContext(ErrorsContext);
-    const {carSeats,} = useContext(CarSeatContext)
-    const [carseat, setCarseat] = useState({ reviews: [] })
+    const {carSeats} = useContext(CarSeatContext)
+    const [carseat, setCarseat] = useState({ reviews: [] });
 
-    const carSeat = carSeats.find((carseat) => carseat.id === parseInt(carseat_id))
-    
+const selectedCarSeat = carSeats.find((carseat) => carseat.id === parseInt(carseat_id));
 
-    useEffect(() => {
-        if(!loggedIn){
-           navigate("/")
-           }
-            setErrors([]);
-    }, [ loggedIn, navigate, setErrors]);
+useEffect(() => {
+  if (!loggedIn) {
+    navigate("/");
+  }
+  setErrors([]);
+}, [loggedIn, navigate, setErrors]);
 
-    useEffect(() => {
-        if(carSeat){
-            setCarseat(carSeat)
+useEffect(() => {
+  if (selectedCarSeat) {
+    // Update the state only if the selected car seat is different from the current one
+    if (selectedCarSeat.id !== carseat.id) {
+      setCarseat(selectedCarSeat);
+    }
+  }
+}, [selectedCarSeat, carseat.id]);
+
+
+
+        const handleDeleteReview = (deleteReviewId) => {
+            const removeReview = carseat.reviews.filter(
+                (review) => review.id !==deleteReviewId
+            )
+            setCarseat((prevState) => ({...prevState, reviews: removeReview}))
+            removeCarSeatRev(carseat)
+            console.log(carseat)
         }
-    }, [carseat, carseat_id, carSeat])
-
-
-    const handleDeleteReview = async (deletedRevId) => {
-        // Filter out the review with the specified ID
-        const updatedReviews = carseat.reviews.filter((review) => review.id !== deletedRevId);
+    // const handleDeleteReview = async (deletedRevId) => {
+    //     // Filter out the review with the specified ID
+    //     const updatedReviews = carseat.reviews.filter((review) => review.id !== deletedRevId);
       
-        // Log the current state before updating
-        console.log('Before updating state:', carseat);
+    //     // Log the current state before updating
+    //     // console.log('Before updating state:', carseat);
       
-        // Update the state with the new reviews
-        setCarseat((prevState) => ({
-          ...prevState,
-          reviews: updatedReviews,
-        }));
-      
-        // Log the state after updating
-        console.log('After updating state:', carseat);
-      };
+    //     // Update the state with the new reviews
+    //     setCarseat((prevState) => ({
+    //       ...prevState,
+    //       reviews: updatedReviews,
+    //     }));
+    //     // removeCarSeatRev(carseat)
+    //     // Log the state after updating
+    //     // console.log('After updating state:', carseat);
+    //   };
 
       useEffect(() => {
         console.log('Carseat state changed:', carseat);

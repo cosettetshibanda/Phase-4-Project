@@ -22,31 +22,37 @@ const UserCarSeats = () => {
     }, [loggedIn, navigate, setErrors])
 
 
-
+    const myCarSeats = currentUser?.carseats ? (
+        currentUser.carseats.map((carseat) => (
+          <li key={carseat.id}>
+            <Link to={`/carseats/${carseat.id}`}>{carseat.name}</Link>
+          </li>
+        ))
+      ) : null;
                         
-    const myReviews = currentUser?.reviews?.filter((review) => review.user_id === parseInt(currentUser?.id, 10));
-        const uniqueCarSeatNames = new Set();
+    // const myReviews = currentUser?.reviews?.filter((review) => review.user_id === parseInt(currentUser?.id, 10));
+    //     const uniqueCarSeatNames = new Set();
                         
-            const myCarSeatList = myReviews?.map((review) => {
-                const findCarSeatName = carSeats.find((carseat) => carseat.id === review.carseat_id);
-                const carSeatName = findCarSeatName?.name || "No Car Seat Found";
-                    if (!uniqueCarSeatNames.has(carSeatName)) {
-                        uniqueCarSeatNames.add(carSeatName);  
-                    return (
-                        <li key={review.id}>
-                            <Link to={`/carseats/${review.carseat_id}`}>{carSeatName}</Link>
-                        </li>
-                        );
-                    }
-                        return null;
-                        });
+    //         const myCarSeatList = myReviews?.map((review) => {
+    //             const findCarSeatName = carSeats.find((carseat) => carseat.id === review.carseat_id);
+    //             const carSeatName = findCarSeatName?.name || "No Car Seat Found";
+    //                 if (!uniqueCarSeatNames.has(carSeatName)) {
+    //                     uniqueCarSeatNames.add(carSeatName);  
+    //                 return (
+    //                     <li key={review.id}>
+    //                         <Link to={`/carseats/${review.carseat_id}`}>{carSeatName}</Link>
+    //                     </li>
+    //                     );
+    //                 }
+    //                     return null;
+    //                     });
 
                         
     return (
         <>
         <h3>Car seats you have reviewed.</h3>
         <ul>
-            {myCarSeatList?.length > 0 ? myCarSeatList : "You haven't reviewed anything yet."}
+            {myCarSeats?.length > 0 ? myCarSeats : "You haven't reviewed anything yet."}
         </ul>
         </>
     )

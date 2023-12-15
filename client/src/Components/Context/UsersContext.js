@@ -38,16 +38,47 @@ const UsersProvider = ({ children }) => {
       }
 
       const addCarSeatRev = (newReview) => {
-        setCurrentUser((prevState) => ({...prevState, reviews: [...currentUser.reviews, newReview]}))
+        setCurrentUser((prevState) => ({...prevState, carseats: [...currentUser.carseats, newReview]}))
       }
 
-      const removeCarSeat = (deletedCarSeat) => {
-        console.log('Before removal:', currentUser.carseats);
-        const editedCarSeats = currentUser.carseats.filter((carseat) => carseat.id !== deletedCarSeat.id)
-        console.log('Filtered car seats:', editedCarSeats);
+      // const removeCarSeatRev = (deletedReview) => {
+      //   setCurrentUser((prevState) => {
+      //     const editedReviews = prevState.reviews.filter((review) => review.id !== deletedReview);
+      //     return { ...prevState, reviews: editedReviews };
+      //   });
+      // };
+
+      // const removeCarSeatRev = (deletedReview) => {
+      //   const editedReviews = currentUser.reviews.filter((review) => review.id !== deletedReview)
+      //   setCurrentUser((prevState) => ({...prevState, reviews: editedReviews}))
+        
+      // }
+      const removeCarSeatRev = (deletedReview) => {
+        const editedCarSeats = currentUser.carseats.filter((carseat) => carseat.id !== deletedReview.id)
         setCurrentUser((prevState) => ({...prevState, carseats: editedCarSeats}))
-        console.log('After removal:', currentUser.carseats);
       }
+
+      // const removeCarSeatRev = (deletedReviewId) => {
+      //   const updatedReviews = currentUser.reviews.filter((review) => review.id !== deletedReviewId);
+      //   const updatedUser = { ...currentUser, reviews: updatedReviews };
+      //   setCurrentUser(updatedUser);
+      //   console.log('After removal:', updatedUser.reviews);
+      // };
+
+      // const removeCarSeatRev = (deletedReviewId) => {
+      //   const updatedReviews = currentUser.reviews.filter((review) => {
+      //     console.log('Review id:', review.id);
+      //     if (review.id === deletedReviewId) {
+      //       console.log('Removing review:', review);
+      //     }
+      //     return review.id !== deletedReviewId;
+      //   });
+      
+      //   const updatedUser = { ...currentUser, reviews: updatedReviews };
+      //   setCurrentUser(updatedUser);
+        
+      //   console.log('After removal:', updatedUser.reviews);
+      // };
 
       const updateUserRev = (updatedRev) => {
         const updatedReviews = currentUser.reviews.map((review) => {
@@ -64,7 +95,7 @@ const UsersProvider = ({ children }) => {
 
   
       return(
-          <UsersContext.Provider value={{ addCarSeat, addCarSeatRev, removeCarSeat, updateUserRev, loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
+          <UsersContext.Provider value={{ addCarSeat, addCarSeatRev, removeCarSeatRev, updateUserRev, loginUser, logoutUser, loggedIn, currentUser, setCurrentUser }}>{ children }</UsersContext.Provider>
       )
   
    }
