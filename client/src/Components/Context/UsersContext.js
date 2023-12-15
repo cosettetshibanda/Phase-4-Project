@@ -41,44 +41,13 @@ const UsersProvider = ({ children }) => {
         setCurrentUser((prevState) => ({...prevState, carseats: [...currentUser.carseats, newReview]}))
       }
 
-      // const removeCarSeatRev = (deletedReview) => {
-      //   setCurrentUser((prevState) => {
-      //     const editedReviews = prevState.reviews.filter((review) => review.id !== deletedReview);
-      //     return { ...prevState, reviews: editedReviews };
-      //   });
-      // };
-
-      // const removeCarSeatRev = (deletedReview) => {
-      //   const editedReviews = currentUser.reviews.filter((review) => review.id !== deletedReview)
-      //   setCurrentUser((prevState) => ({...prevState, reviews: editedReviews}))
-        
-      // }
+  
       const removeCarSeatRev = (deletedReview) => {
         const editedCarSeats = currentUser.carseats.filter((carseat) => carseat.id !== deletedReview.id)
         setCurrentUser((prevState) => ({...prevState, carseats: editedCarSeats}))
       }
 
-      // const removeCarSeatRev = (deletedReviewId) => {
-      //   const updatedReviews = currentUser.reviews.filter((review) => review.id !== deletedReviewId);
-      //   const updatedUser = { ...currentUser, reviews: updatedReviews };
-      //   setCurrentUser(updatedUser);
-      //   console.log('After removal:', updatedUser.reviews);
-      // };
-
-      // const removeCarSeatRev = (deletedReviewId) => {
-      //   const updatedReviews = currentUser.reviews.filter((review) => {
-      //     console.log('Review id:', review.id);
-      //     if (review.id === deletedReviewId) {
-      //       console.log('Removing review:', review);
-      //     }
-      //     return review.id !== deletedReviewId;
-      //   });
-      
-      //   const updatedUser = { ...currentUser, reviews: updatedReviews };
-      //   setCurrentUser(updatedUser);
-        
-      //   console.log('After removal:', updatedUser.reviews);
-      // };
+     
 
       const updateUserRev = (updatedRev) => {
         const updatedReviews = currentUser.reviews.map((review) => {

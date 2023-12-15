@@ -42,22 +42,6 @@ useEffect(() => {
             removeCarSeatRev(carseat)
             console.log(carseat)
         }
-    // const handleDeleteReview = async (deletedRevId) => {
-    //     // Filter out the review with the specified ID
-    //     const updatedReviews = carseat.reviews.filter((review) => review.id !== deletedRevId);
-      
-    //     // Log the current state before updating
-    //     // console.log('Before updating state:', carseat);
-      
-    //     // Update the state with the new reviews
-    //     setCarseat((prevState) => ({
-    //       ...prevState,
-    //       reviews: updatedReviews,
-    //     }));
-    //     // removeCarSeatRev(carseat)
-    //     // Log the state after updating
-    //     // console.log('After updating state:', carseat);
-    //   };
 
       useEffect(() => {
         console.log('Carseat state changed:', carseat);
@@ -74,7 +58,6 @@ useEffect(() => {
         setCarseat((prevState) => ({...prevState, reviews: updateReviews}))
     }
 
-    // const carSeatReviews = reviews?.filter((review) => review.carseat_id === parseInt(carseat_id, 10))
 
     const reviewCards = carseat.reviews.map(review => <ReviewCard key={review.id} handleEditReview={handleEditReview} carseat={carseat} review={review} handleDeleteReview={handleDeleteReview}/>);
 
