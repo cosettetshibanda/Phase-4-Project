@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { UsersContext } from './Context/UsersContext';
 import { CarSeatContext } from './Context/CarSeatContext';
-// import { ErrorsContext } from './Context/ErrorsContext';
+
 
 
 function CarSeatForm ({loading}) {
     const navigate = useNavigate();
     const {addCarSeat} = useContext(CarSeatContext)
     const {loggedIn} = useContext(UsersContext)
-    // const {setErrors} = useContext(ErrorsContext)
+
 
     const [errors, setErrors] = useState()
     const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)

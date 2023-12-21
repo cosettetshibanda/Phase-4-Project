@@ -1,9 +1,7 @@
 import {useContext, useState} from "react";
 import { useNavigate } from "react-router-dom"
 import { UsersContext } from "./Context/UsersContext";
-// import SignUpForm from "./SignUpForm";
-// import LoginForm from "./LoginForm";
-// import { ErrorsContext } from "./Context/ErrorsContext";
+
 
 
 
@@ -11,7 +9,7 @@ import { UsersContext } from "./Context/UsersContext";
 function Login(){
     const navigate = useNavigate()
     const {loginUser} = useContext(UsersContext)
-    // const {setErrors} = useContext(ErrorsContext)
+
 
     const [errors, setErrors] = useState()
     const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)

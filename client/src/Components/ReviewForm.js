@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CarSeatContext } from "./Context/CarSeatContext";
 import { UsersContext } from "./Context/UsersContext";
-// import { ErrorsContext } from "./Context/ErrorsContext";
+
 
 
 const ReviewForm = () => {  
     const navigate = useNavigate();
     const {carSeats} = useContext(CarSeatContext);
     const {loggedIn, currentUser, addCarSeatRev } = useContext(UsersContext);
-    // const {setErrors} = useContext(ErrorsContext);
+
     const {id} = useParams();
     
     const [errors, setErrors] = useState()
@@ -18,7 +18,7 @@ const ReviewForm = () => {
     const [carSeat, setCarSeat] = useState("");
     const [formData, setFormData] = useState({
         carseat_id: "",
-        user_id: "",
+        // user_id: "",
         stars: "",
         summary: "",
     });
@@ -31,7 +31,7 @@ const ReviewForm = () => {
             setCarSeat(carSeats.find(carSeat => carSeat.id === parseInt(id, 10)));
             setFormData({
                 carseat_id: carSeat.id,
-                user_id: currentUser.id, 
+                // user_id: currentUser.id, 
                 stars: "",
                 summary: "",
             })

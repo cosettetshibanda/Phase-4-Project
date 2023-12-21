@@ -3,14 +3,14 @@ import { UsersContext } from "./Context/UsersContext";
 import { useNavigate } from "react-router-dom";
 import CarSeatCard from "./CarSeatCard";
 import { CarSeatContext } from "./Context/CarSeatContext";
-// import { ErrorsContext } from "./Context/ErrorsContext";
+
 
 
 function CarSeatList() {
     const navigate = useNavigate();
     const {carSeats} = useContext(CarSeatContext)
     const { loggedIn} = useContext(UsersContext)
-    // const {setErrors} = useContext(ErrorsContext)
+  
 
     const [errors, setErrors] = useState()
     const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
