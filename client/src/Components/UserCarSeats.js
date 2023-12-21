@@ -1,15 +1,18 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { UsersContext } from "./Context/UsersContext"
-import { ErrorsContext } from "./Context/ErrorsContext"
-import { CarSeatContext } from "./Context/CarSeatContext"
+// import { ErrorsContext } from "./Context/ErrorsContext"
+// import { CarSeatContext } from "./Context/CarSeatContext"
 
 
 const UserCarSeats = () => {
     const navigate = useNavigate()
     const {loggedIn, currentUser} = useContext(UsersContext)
-    const {setErrors} = useContext(ErrorsContext)
-    const {carSeats} = useContext(CarSeatContext)
+    // const {setErrors} = useContext(ErrorsContext)
+    // const {carSeats} = useContext(CarSeatContext)
+    const [errors, setErrors] = useState()
+    const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
+
   
 
     useEffect(() => {
@@ -50,6 +53,7 @@ const UserCarSeats = () => {
                         
     return (
         <>
+        {errorsList}
         <h3>Car seats you have reviewed.</h3>
         <ul>
             {myCarSeats?.length > 0 ? myCarSeats : "You haven't reviewed anything yet."}

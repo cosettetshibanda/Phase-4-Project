@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UsersContext } from "./Context/UsersContext";
-import { ErrorsContext } from "./Context/ErrorsContext";
+// import { ErrorsContext } from "./Context/ErrorsContext";
 import ReviewCard from "./ReviewCard";
 import { CarSeatContext } from "./Context/CarSeatContext";
 
@@ -9,8 +9,8 @@ import { CarSeatContext } from "./Context/CarSeatContext";
 const CarSeatReviews = () => {
     const navigate = useNavigate();
     const {carseat_id} = useParams();
-    const {loggedIn, removeCarSeatRev, currentUser} = useContext(UsersContext);
-    const {setErrors} = useContext(ErrorsContext);
+    const {loggedIn, removeCarSeatRev} = useContext(UsersContext);
+    // const {setErrors} = useContext(ErrorsContext);
     const {carSeats} = useContext(CarSeatContext)
     const [carseat, setCarseat] = useState({ reviews: [] });
 
@@ -20,8 +20,7 @@ useEffect(() => {
   if (!loggedIn) {
     navigate("/");
   }
-  setErrors([]);
-}, [loggedIn, navigate, setErrors]);
+}, [loggedIn, navigate]);
 
 useEffect(() => {
   if (selectedCarSeat) {

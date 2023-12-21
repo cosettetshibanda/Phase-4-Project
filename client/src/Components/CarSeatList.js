@@ -1,16 +1,20 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UsersContext } from "./Context/UsersContext";
 import { useNavigate } from "react-router-dom";
 import CarSeatCard from "./CarSeatCard";
 import { CarSeatContext } from "./Context/CarSeatContext";
-import { ErrorsContext } from "./Context/ErrorsContext";
+// import { ErrorsContext } from "./Context/ErrorsContext";
 
 
 function CarSeatList() {
     const navigate = useNavigate();
     const {carSeats} = useContext(CarSeatContext)
     const { loggedIn} = useContext(UsersContext)
-    const {setErrors} = useContext(ErrorsContext)
+    // const {setErrors} = useContext(ErrorsContext)
+
+    const [errors, setErrors] = useState()
+    const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
+
 
 
     useEffect(() => {
@@ -28,6 +32,7 @@ function CarSeatList() {
 
     return (
         <>
+            {errorsList}
             <h2 className="title">Here are all the Car Seats!</h2>
             <div className="carSeatList">{carSeatCards}</div>
         </>

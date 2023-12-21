@@ -6,10 +6,10 @@ import { UsersProvider } from './Components/Context/UsersContext';
 import CarSeatList from './Components/CarSeatList';
 import CarSeatForm from './Components/CarSeatForm';
 import { CarSeatProvider } from './Components/Context/CarSeatContext';
-import Errors from './Components/Errors';
+// import Errors from './Components/Errors';
 import Home from './Components/Home';
 import CarSeatReviews from './Components/CarSeatReviews';
-import { ErrorsProvider } from './Components/Context/ErrorsContext';
+// import { ErrorsProvider } from './Components/Context/ErrorsContext';
 import UserCarSeats from './Components/UserCarSeats';
 import ReviewForm from './Components/ReviewForm';
 import SignUpForm from './Components/SignUpForm';
@@ -22,11 +22,11 @@ function App() {
 
   return (
     <main>
-      <ErrorsProvider >
+      {/* <ErrorsProvider > */}
         <UsersProvider>
             <CarSeatProvider >
               <NavBar />
-              <Errors />
+              {/* <Errors /> */}
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/signup" element={<SignUpForm />} /> 
@@ -41,7 +41,7 @@ function App() {
               </Routes>
             </CarSeatProvider>
         </UsersProvider>
-      </ErrorsProvider>
+      {/* </ErrorsProvider> */}
     </main>
   );
 }

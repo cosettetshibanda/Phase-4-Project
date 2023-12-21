@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { UsersContext } from "./Context/UsersContext";
 import { useNavigate } from "react-router-dom";
-import { ErrorsContext } from "./Context/ErrorsContext";
+// import { ErrorsContext } from "./Context/ErrorsContext";
 
 function SignUpForm() {
     const navigate = useNavigate()
-    const {setErrors} = useContext(ErrorsContext)
+    // const {setErrors} = useContext(ErrorsContext)
     const { loginUser } = useContext(UsersContext)
+    const [errors, setErrors] = useState()
+    const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
+
 
 
     const [formData, setFormData] = useState({
@@ -39,11 +42,14 @@ function SignUpForm() {
             } else {
                 loginUser(data)
                 navigate("/")
+                setErrors([])
                 }
         })
       }
 
     return (
+        <div>
+            {errorsList}
         <form onSubmit={handleSubmit}>
             <label>Username</label>
             <input
@@ -87,6 +93,7 @@ function SignUpForm() {
             />
             <input type="submit" value="Sign Up" />
         </form>
+        </div>
     )
 }
 

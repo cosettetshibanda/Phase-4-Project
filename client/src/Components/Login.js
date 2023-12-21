@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { UsersContext } from "./Context/UsersContext";
 // import SignUpForm from "./SignUpForm";
 // import LoginForm from "./LoginForm";
-import { ErrorsContext } from "./Context/ErrorsContext";
+// import { ErrorsContext } from "./Context/ErrorsContext";
 
 
 
@@ -11,7 +11,11 @@ import { ErrorsContext } from "./Context/ErrorsContext";
 function Login(){
     const navigate = useNavigate()
     const {loginUser} = useContext(UsersContext)
-    const {setErrors} = useContext(ErrorsContext)
+    // const {setErrors} = useContext(ErrorsContext)
+
+    const [errors, setErrors] = useState()
+    const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
+
 
     const [formData, setFormData] = useState({
         username: "",
@@ -46,6 +50,9 @@ function Login(){
 
 
     return (
+
+      <div>
+        {errorsList}
         <form onSubmit={handleSubmit}>
         <label>Username</label>
         <input
@@ -65,6 +72,7 @@ function Login(){
         />
         <input type="submit" value="Login" />
       </form>
+      </div>
     )
       
 }

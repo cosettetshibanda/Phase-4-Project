@@ -29,6 +29,17 @@ class CarseatsController < ApplicationController
         head :no_content
     end
 
+    def popular_seats
+        carseats = Carseat.all.filter {|carseat| carseat.reviews.count >= params[:number].to_i}
+        render json: carseats
+        # Carseat.all.map {|carseat| carseat.reviews}
+        # Carseat.all.map{|carseat| carseat.reviews.count}
+        # Carseat.all.filter do |carseat|
+        #  carseat.reviews.count >= params[:number]
+        #     carseat
+        # end
+    end
+
     private
 
     def carseat_find

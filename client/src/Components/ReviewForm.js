@@ -2,16 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CarSeatContext } from "./Context/CarSeatContext";
 import { UsersContext } from "./Context/UsersContext";
-import { ErrorsContext } from "./Context/ErrorsContext";
+// import { ErrorsContext } from "./Context/ErrorsContext";
 
 
 const ReviewForm = () => {  
     const navigate = useNavigate();
     const {carSeats} = useContext(CarSeatContext);
     const {loggedIn, currentUser, addCarSeatRev } = useContext(UsersContext);
-    const {setErrors} = useContext(ErrorsContext);
+    // const {setErrors} = useContext(ErrorsContext);
     const {id} = useParams();
     
+    const [errors, setErrors] = useState()
+    const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
+
     const [carSeat, setCarSeat] = useState("");
     const [formData, setFormData] = useState({
         carseat_id: "",
@@ -74,6 +77,7 @@ const ReviewForm = () => {
 
     return (
         <>
+            {errorsList}
             <h3>Add a Review for {carSeat.name}</h3>
             <form onSubmit={handleSubmit}>
                 <label>Stars (1-5)</label>

@@ -7,7 +7,7 @@ import ReviewEdit from "./ReviewEdit";
 const ReviewCard = ({ review, carseat, handleEditReview, currentReviews, handleDeleteReview}) => {
     const [showEditForm, setShowEditForm] = useState(false)
     const navigate = useNavigate();
-    const {currentUser, removeCarSeatRev} = useContext(UsersContext);
+    const {currentUser} = useContext(UsersContext);
 
   
     const deleteReview = async () => {
