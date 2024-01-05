@@ -11,7 +11,7 @@ function CarSeatList() {
     const {carSeats} = useContext(CarSeatContext)
     const { loggedIn} = useContext(UsersContext)
   
-
+    // const [expensiveCarseats, setExpensiveCarSeats] = useState({})
     const [errors, setErrors] = useState()
     const errorsList = errors?.map((error, idx) => <li key={idx} style={{color: 'red'}}>{error}</li>)
 
@@ -26,7 +26,17 @@ function CarSeatList() {
         }
     }, [loggedIn, navigate, setErrors])
 
+    // const handleClick =() => {
+    //     fetch("/mostExpensive") 
+    //     .then(r => r.json)
+    //     .then(data => setExpensiveCarSeats)  
+        
+    // }       
 
+    //     fetch("/carseats")
+    //     .then(r => r.json())
+    //     .then(data => setCarSeats(data))
+    // }
 
     const carSeatCards = carSeats.map(carSeat => <CarSeatCard key={carSeat.id} carSeat={carSeat}/>)
 
@@ -34,6 +44,7 @@ function CarSeatList() {
         <>
             {errorsList}
             <h2 className="title">Here are all the Car Seats!</h2>
+            {/* <button onClick={handleClick} >Most Expensive Carseats</button> */}
             <div className="carSeatList">{carSeatCards}</div>
         </>
     )

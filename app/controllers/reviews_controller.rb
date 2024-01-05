@@ -31,6 +31,25 @@ class ReviewsController < ApplicationController
         head :no_content
     end
 
+    def review_length
+    
+        # user = params[:name]
+        # reviews = Review.all.map{|review| review.user}
+        # sam.reviews
+        # user = User.where("name = ?", params[:name])
+        user = User.find_by(username: params[:name])
+        userReviews = user.reviews.filter{|review| review.summary.split.count >= params[:number].to_i}
+        render json: userReviews
+        
+
+    end
+
+    # def findReviews
+    #     reviews = Review.all.filter{|review| review.stars == params[:number].to_i}
+    #     findCarseats = reviews.map{|review| review.carseat}
+    #     render json: findCarseats
+    # end
+
     private
 
     def review_find
