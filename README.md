@@ -1,4 +1,4 @@
-# Frontend Animal Categories
+# Carseat Options
 
 ## Project Philosophy
 As a parent there are a million different options for everything. So many decisions are having to be made on a daily basis. The point of this project is to make one of those big descisions a bit easier. 
@@ -19,7 +19,8 @@ This webiste allows you to create and view a list of car seats. With each car se
 At the top of the page are links that allow you to see all the reviews that people have added, the car seats that you have put reviews on, the ability to add a new car seat to the list, and logout of your account. 
 
 ## How to Use
-To view the different animals in each category you must click on the "see animals" link underneath the image of the category. This will take you to the new page with a list of all the animals. You can delete any of the animals by clicking on the little garbage can emoji. If you input a image address into the form below and submit it the picture of the animal will update. Another thing that it allows at the bottom of the page is an option to create a new animal in that category. You do this by filling out the form and submitting it. There is also an option to add a new category and that is done by submitting the form under the link at the top of the page called "new category."
+This app gives you the option to view all carseat. There is a link at the top allowing you to add a carseat. You fill out the form and submit it then your carseat will appear at the bottom of the list of carseats. You can add a review on a carseat, view reviews, and delete a review that you have created. You are only allowed to review the same carseat once. There is also a link at the top that allows you to see all the carseats you have reviewed.
+<!-- To view the different animals in each category you must click on the "see animals" link underneath the image of the category. This will take you to the new page with a list of all the animals. You can delete any of the animals by clicking on the little garbage can emoji. If you input a image address into the form below and submit it the picture of the animal will update. Another thing that it allows at the bottom of the page is an option to create a new animal in that category. You do this by filling out the form and submitting it. There is also an option to add a new category and that is done by submitting the form under the link at the top of the page called "new category." -->
 
 ## Installation Instructions
 To get this app up and running you need to by forking and then cloning this on github and running npm install --prefix client and npm start --prefix client. This will bring up the website. To get the website to work you must also get the back end up and running. To do this you put in the terminal rails db:migrate and rails s. 
