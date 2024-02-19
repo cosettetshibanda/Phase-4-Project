@@ -1,4 +1,4 @@
-# Carseat Options
+# Car Seat Options
 
 ## Project Philosophy
 As a parent there are a million different options for everything. So many decisions are having to be made on a daily basis. The point of this project is to make one of those big descisions a bit easier. 
